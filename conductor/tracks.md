@@ -7,5 +7,5 @@
 
 ---
 
-- [~] **Track: Project Scaffolding and Authentication**
+- [x] **Track: Project Scaffolding and Authentication**
 *Link: [./tracks/scaffolding_auth_20260302/](./tracks/scaffolding_auth_20260302/)*
