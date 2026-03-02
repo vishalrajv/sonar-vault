@@ -6,11 +6,11 @@
 - [x] Task: Integrate local assets (ensure icons and fonts are available offline). 9750a1b
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Setup & Scaffolding' (Protocol in workflow.md) 4e0806c
 
-## Phase 2: Core UI Components
+## Phase 2: Core UI Components [checkpoint: 1b3fae5]
 - [x] Task: Implement the **Stat Card** grid (4 cards for metrics like 'Total Builds', 'Active Ships'). 677b0c2
 - [x] Task: Implement the **Recent Activity Table** with mock data entries (Ship, Project, Version, Date). a4b4129
 - [x] Task: Build the **Filter Header** with dropdowns for Ship Name and Sonar Project. 71ee398
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Core UI Components' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Core UI Components' (Protocol in workflow.md) 1b3fae5
 
 ## Phase 3: Data Visualization (Charts)
 - [ ] Task: Add a local charting library (e.g., Chart.js or ApexCharts) to the project.
