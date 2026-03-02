@@ -34,8 +34,8 @@
     - [x] Implement client-side form handling and API call logic
 - [x] Task: Conductor - User Manual Verification 'Frontend & UI Scaffolding' (Protocol in workflow.md) [449b509]
 
-## Phase 4: Integration & Acceptance
+## Phase 4: Integration & Acceptance [checkpoint: 50d01e0]
 - [x] Task: End-to-End Verification [a470f6d]
     - [x] Verify full login flow from UI to Backend
     - [x] Ensure all acceptance criteria from spec.md are met
-- [ ] Task: Conductor - User Manual Verification 'Integration & Acceptance' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Integration & Acceptance' (Protocol in workflow.md) [50d01e0]
