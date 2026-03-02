@@ -39,15 +39,26 @@
         <!-- Content Area -->
         <div class="flex-1 flex flex-col overflow-y-auto overflow-x-hidden">
             <!-- Header -->
-            <header class="bg-white border-b p-4 flex justify-between items-center shadow-sm">
-                <button id="sidebar-toggle" class="md:hidden p-2 hover:bg-gray-100 rounded">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <header class="bg-white border-b border-gray-100 p-4 flex justify-between items-center shadow-sm sticky top-0 z-10">
+                <button id="sidebar-toggle" class="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
                 <div class="flex items-center ml-auto">
-                    <span class="mr-4 text-sm font-medium">Welcome, Admin</span>
-                    <button class="bg-red-600 text-white px-4 py-1.5 rounded text-sm hover:bg-red-700 transition">Logout</button>
+                    <div class="mr-4 text-right hidden sm:block">
+                        <p class="text-sm font-bold text-gray-900 leading-none">BSTC Admin</p>
+                        <p class="text-xs text-gray-500 mt-1">Super User</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold border-2 border-white shadow-sm mr-4">
+                        BA
+                    </div>
+                    <button class="bg-blue-50 text-blue-700 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-100 transition-colors flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                        </svg>
+                        Logout
+                    </button>
                 </div>
             </header>
 

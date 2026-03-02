@@ -28,6 +28,13 @@ def test_filters_exist():
         assert "Sonar Project" in content
         assert "<select" in content
 
+def test_refined_header_exists():
+    with open("frontend/dashboard.html", "r") as f:
+        content = f.read()
+        assert "BSTC Admin" in content
+        assert "Logout" in content
+        assert "sticky top-0" in content
+
 def test_charting_library_exists():
     assert os.path.exists("frontend/static/js/charting-helper.js")
 
