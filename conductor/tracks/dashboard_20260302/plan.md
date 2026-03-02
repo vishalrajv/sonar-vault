@@ -12,11 +12,11 @@
 - [x] Task: Build the **Filter Header** with dropdowns for Ship Name and Sonar Project. 71ee398
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Core UI Components' (Protocol in workflow.md) 1b3fae5
 
-## Phase 3: Data Visualization (Charts)
+## Phase 3: Data Visualization (Charts) [checkpoint: 4b4d0ff]
 - [x] Task: Add a local charting library (e.g., Chart.js or ApexCharts) to the project. e285f83
 - [x] Task: Implement a **Line Chart** to show software upload trends over time. 1f95004
 - [x] Task: Implement a **Bar Chart** to display project distribution across the fleet. 004bf91
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Data Visualization (Charts)' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Data Visualization (Charts)' (Protocol in workflow.md) 4b4d0ff
 
 ## Phase 4: Styling & Finalization
 - [ ] Task: Apply TailAdmin-inspired styling (consistent colors, shadows, and spacing).
