@@ -1,10 +1,10 @@
 # Implementation Plan: Dashboard Page (TailAdmin Inspiration)
 
-## Phase 1: Setup & Scaffolding
+## Phase 1: Setup & Scaffolding [checkpoint: 4e0806c]
 - [x] Task: Create a new dashboard HTML file (`frontend/dashboard.html`) and set up the basic structure. 64b2327
 - [x] Task: Configure the Tailwind layout with a sidebar and main content area (sidebar-driven navigation). d808caa
 - [x] Task: Integrate local assets (ensure icons and fonts are available offline). 9750a1b
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Setup & Scaffolding' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Setup & Scaffolding' (Protocol in workflow.md) 4e0806c
 
 ## Phase 2: Core UI Components
 - [ ] Task: Implement the **Stat Card** grid (4 cards for metrics like 'Total Builds', 'Active Ships').
