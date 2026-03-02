@@ -9,7 +9,7 @@
 ## Phase 2: Core UI Components
 - [x] Task: Implement the **Stat Card** grid (4 cards for metrics like 'Total Builds', 'Active Ships'). 677b0c2
 - [x] Task: Implement the **Recent Activity Table** with mock data entries (Ship, Project, Version, Date). a4b4129
-- [ ] Task: Build the **Filter Header** with dropdowns for Ship Name and Sonar Project.
+- [x] Task: Build the **Filter Header** with dropdowns for Ship Name and Sonar Project. 71ee398
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Core UI Components' (Protocol in workflow.md)
 
 ## Phase 3: Data Visualization (Charts)
