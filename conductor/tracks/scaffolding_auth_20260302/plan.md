@@ -6,9 +6,9 @@
     - [x] Initialize Python virtual environment (.venv)
     - [x] Create .gitignore and .env template
     - [x] Install core dependencies (fastapi, uvicorn, sqlalchemy, python-dotenv, bcrypt)
-- [ ] Task: Base Database Configuration
-    - [ ] Create `models/base.py` with SQLAlchemy DeclarativeBase
-    - [ ] Implement database connection and session management in `database/`
+- [x] Task: Base Database Configuration [4251b27]
+    - [x] Create `models/base.py` with SQLAlchemy DeclarativeBase
+    - [x] Implement database connection and session management in `database/`
 - [ ] Task: Conductor - User Manual Verification 'Project Scaffolding' (Protocol in workflow.md)
 
 ## Phase 2: Authentication Backend
