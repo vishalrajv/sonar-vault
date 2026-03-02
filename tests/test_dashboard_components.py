@@ -36,3 +36,9 @@ def test_line_chart_exists():
         content = f.read()
         assert 'id="line-chart"' in content
         assert "Software Uploads Over Time" in content
+
+def test_bar_chart_exists():
+    with open("frontend/dashboard.html", "r") as f:
+        content = f.read()
+        assert 'id="bar-chart"' in content
+        assert "Project Distribution" in content
