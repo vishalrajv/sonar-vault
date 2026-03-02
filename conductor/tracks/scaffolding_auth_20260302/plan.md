@@ -1,11 +1,11 @@
 # Implementation Plan: Project Scaffolding and Authentication
 
 ## Phase 1: Project Scaffolding
-- [ ] Task: Initialize Project Structure and Environment
-    - [ ] Create mandatory directories (/scripts, /app, /models, /database, /api, /frontend)
-    - [ ] Initialize Python virtual environment (.venv)
-    - [ ] Create .gitignore and .env template
-    - [ ] Install core dependencies (fastapi, uvicorn, sqlalchemy, python-dotenv, bcrypt)
+- [~] Task: Initialize Project Structure and Environment
+    - [x] Create mandatory directories (/scripts, /app, /models, /database, /api, /frontend)
+    - [x] Initialize Python virtual environment (.venv)
+    - [x] Create .gitignore and .env template
+    - [x] Install core dependencies (fastapi, uvicorn, sqlalchemy, python-dotenv, bcrypt)
 - [ ] Task: Base Database Configuration
     - [ ] Create `models/base.py` with SQLAlchemy DeclarativeBase
     - [ ] Implement database connection and session management in `database/`
