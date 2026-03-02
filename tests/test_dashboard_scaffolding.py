@@ -26,3 +26,17 @@ def test_offline_integrity():
         # Check for asset links starting with http or https
         assert 'src="http' not in content
         assert 'href="http' not in content
+
+def test_basic_accessibility():
+    with open("frontend/dashboard.html", "r") as f:
+        content = f.read()
+        # Basic check for image alt tags (if any img tags are used)
+        if "<img" in content:
+            assert 'alt="' in content
+
+def test_js_initialization():
+    with open("frontend/static/js/dashboard.js", "r") as f:
+        content = f.read()
+        assert "sidebarToggle" in content
+        assert "ChartingHelper" in content
+        assert "drawLineChart" in content
