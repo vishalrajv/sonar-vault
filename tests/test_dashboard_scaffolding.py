@@ -9,3 +9,9 @@ def test_dashboard_html_structure():
         assert "<!DOCTYPE html>" in content
         assert "static/css/tailwind.css" in content
         assert "Dashboard" in content
+        assert "static/js/dashboard.js" in content
+        assert 'id="sidebar"' in content
+        assert 'id="sidebar-toggle"' in content
+
+def test_dashboard_js_exists():
+    assert os.path.exists("frontend/static/js/dashboard.js")
