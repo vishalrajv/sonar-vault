@@ -11,6 +11,7 @@
 ## Frontend
 - **Core:** Vanilla JS/HTML/CSS
 - **Styling:** Tailwind CSS
+- **Visualization:** Custom SVG Charting Helper (offline-first)
 
 ## Architecture
 - **Architecture Type:** Offline-first Server Setup

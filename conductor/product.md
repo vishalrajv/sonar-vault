@@ -7,7 +7,9 @@ Sonar Vault is a specialized offline software version control and repository pla
 The primary user groups for the initial implementation are the **Design & Engineering (D&E)** and **BEL Software Technology Centre (BSTC)** departments. Their workflow centers around securely uploading software binaries, entering version numbers, compilation dates, and viewing the fleet-wide software state.
 
 ## Core Features (MVP)
-The most critical feature for the initial release is the **Software Vault (Upload/View)**. This centralized repository will track software builds using automated metadata (upload date) and manual entries (version number, compiled date) from the uploading agency. It will feature a preview grid for users to view the current state of software across the fleet.
+The core features for the initial release include:
+- **Software Vault (Upload/View):** A centralized repository to track software builds using automated metadata (upload date) and manual entries (version number, compiled date) from the uploading agency. It will feature a preview grid for users to view the current state of software across the fleet.
+- **Fleet Dashboard:** A high-level overview page providing key metrics (Total Builds, Active Ships), software upload trends via charts, and a summary of recent activity across the fleet.
 
 ## Technical Constraints & Design Principles
 - **100% Offline Environment:** The system must operate entirely offline. To achieve this while maintaining a high-quality UI, **all assets (including Tailwind/React dependencies, fonts, and icons) must be bundled locally** within the project folder. No external cloud or CDN dependencies are permitted.
