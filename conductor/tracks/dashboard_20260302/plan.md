@@ -14,7 +14,7 @@
 
 ## Phase 3: Data Visualization (Charts)
 - [x] Task: Add a local charting library (e.g., Chart.js or ApexCharts) to the project. e285f83
-- [ ] Task: Implement a **Line Chart** to show software upload trends over time.
+- [x] Task: Implement a **Line Chart** to show software upload trends over time. 1f95004
 - [ ] Task: Implement a **Bar Chart** to display project distribution across the fleet.
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Data Visualization (Charts)' (Protocol in workflow.md)
 
