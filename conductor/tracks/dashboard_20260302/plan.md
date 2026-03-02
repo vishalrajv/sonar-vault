@@ -7,7 +7,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Setup & Scaffolding' (Protocol in workflow.md) 4e0806c
 
 ## Phase 2: Core UI Components
-- [ ] Task: Implement the **Stat Card** grid (4 cards for metrics like 'Total Builds', 'Active Ships').
+- [x] Task: Implement the **Stat Card** grid (4 cards for metrics like 'Total Builds', 'Active Ships'). 677b0c2
 - [ ] Task: Implement the **Recent Activity Table** with mock data entries (Ship, Project, Version, Date).
 - [ ] Task: Build the **Filter Header** with dropdowns for Ship Name and Sonar Project.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Core UI Components' (Protocol in workflow.md)
