@@ -12,10 +12,10 @@
 - [x] Task: Conductor - User Manual Verification 'Project Scaffolding' (Protocol in workflow.md) [90bd62f]
 
 ## Phase 2: Authentication Backend
-- [ ] Task: User Model Implementation
-    - [ ] Write unit tests for User model (TDD Red)
-    - [ ] Implement User model with role and password hash fields (TDD Green)
-    - [ ] Refactor and verify coverage
+- [x] Task: User Model Implementation [a8631f7]
+    - [x] Write unit tests for User model (TDD Red)
+    - [x] Implement User model with role and password hash fields (TDD Green)
+    - [x] Refactor and verify coverage
 - [ ] Task: Authentication Logic
     - [ ] Write unit tests for password hashing and verification (TDD Red)
     - [ ] Implement bcrypt utility functions (TDD Green)
