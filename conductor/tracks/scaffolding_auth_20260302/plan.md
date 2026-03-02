@@ -16,7 +16,7 @@
     - [x] Write unit tests for User model (TDD Red)
     - [x] Implement User model with role and password hash fields (TDD Green)
     - [x] Refactor and verify coverage
-- [ ] Task: Authentication Logic
+- [~] Task: Authentication Logic
     - [ ] Write unit tests for password hashing and verification (TDD Red)
     - [ ] Implement bcrypt utility functions (TDD Green)
     - [ ] Write tests for login API endpoint (TDD Red)

@@ -1,0 +1,43 @@
+import pytest
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from database.db import get_db
+from models.base import Base
+from app.main import app
+from models.user import User
+from app.auth_utils import hash_password
+
+SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
+
+engine = create_engine(
+    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+)
+TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+@pytest.fixture(scope="module")
+def test_db():
+    Base.metadata.create_all(bind=engine)
+    db = TestingSessionLocal()
+    try:
+        # Seed an admin user
+        hashed_pwd = hash_password("adminpass")
+        admin = User(username="admin", hashed_password=hashed_pwd, role="admin")
+        db.add(admin)
+        db.commit()
+        yield db
+    finally:
+        db.close()
+        Base.metadata.drop_all(bind=engine)
+
+@pytest.fixture(scope="module")
+def client(test_db):
+    def override_get_db():
+        try:
+            yield test_db
+        finally:
+            pass
+    
+    app.dependency_overrides[get_db] = override_get_db
+    from fastapi.testclient import TestClient
+    yield TestClient(app)
+    del app.dependency_overrides[get_db]
