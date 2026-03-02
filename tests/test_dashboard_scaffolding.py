@@ -19,3 +19,10 @@ def test_dashboard_js_exists():
 def test_static_asset_directories_exist():
     assert os.path.exists("frontend/static/fonts")
     assert os.path.exists("frontend/static/images")
+
+def test_offline_integrity():
+    with open("frontend/dashboard.html", "r") as f:
+        content = f.read()
+        # Check for asset links starting with http or https
+        assert 'src="http' not in content
+        assert 'href="http' not in content
