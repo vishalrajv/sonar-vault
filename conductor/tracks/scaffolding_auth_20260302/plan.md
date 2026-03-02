@@ -11,7 +11,7 @@
     - [x] Implement database connection and session management in `database/`
 - [x] Task: Conductor - User Manual Verification 'Project Scaffolding' (Protocol in workflow.md) [90bd62f]
 
-## Phase 2: Authentication Backend
+## Phase 2: Authentication Backend [checkpoint: 9dce6c4]
 - [x] Task: User Model Implementation [a8631f7]
     - [x] Write unit tests for User model (TDD Red)
     - [x] Implement User model with role and password hash fields (TDD Green)
@@ -23,7 +23,7 @@
     - [x] Implement FastAPI login endpoint (TDD Green)
 - [x] Task: User Seeding Utility [d1a39f2]
     - [x] Create a script in `/scripts` to seed initial Admin user
-- [ ] Task: Conductor - User Manual Verification 'Authentication Backend' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Authentication Backend' (Protocol in workflow.md) [9dce6c4]
 
 ## Phase 3: Frontend & UI Scaffolding
 - [ ] Task: Local Tailwind and Static Asset Setup
