@@ -35,7 +35,7 @@
 - [x] Task: Conductor - User Manual Verification 'Frontend & UI Scaffolding' (Protocol in workflow.md) [449b509]
 
 ## Phase 4: Integration & Acceptance
-- [ ] Task: End-to-End Verification
-    - [ ] Verify full login flow from UI to Backend
-    - [ ] Ensure all acceptance criteria from spec.md are met
+- [x] Task: End-to-End Verification [a470f6d]
+    - [x] Verify full login flow from UI to Backend
+    - [x] Ensure all acceptance criteria from spec.md are met
 - [ ] Task: Conductor - User Manual Verification 'Integration & Acceptance' (Protocol in workflow.md)
