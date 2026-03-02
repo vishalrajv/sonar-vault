@@ -15,3 +15,7 @@ def test_dashboard_html_structure():
 
 def test_dashboard_js_exists():
     assert os.path.exists("frontend/static/js/dashboard.js")
+
+def test_static_asset_directories_exist():
+    assert os.path.exists("frontend/static/fonts")
+    assert os.path.exists("frontend/static/images")
