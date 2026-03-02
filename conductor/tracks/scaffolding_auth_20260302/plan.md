@@ -21,8 +21,8 @@
     - [x] Implement bcrypt utility functions (TDD Green)
     - [x] Write tests for login API endpoint (TDD Red)
     - [x] Implement FastAPI login endpoint (TDD Green)
-- [ ] Task: User Seeding Utility
-    - [ ] Create a script in `/scripts` to seed initial Admin user
+- [x] Task: User Seeding Utility [d1a39f2]
+    - [x] Create a script in `/scripts` to seed initial Admin user
 - [ ] Task: Conductor - User Manual Verification 'Authentication Backend' (Protocol in workflow.md)
 
 ## Phase 3: Frontend & UI Scaffolding
