@@ -1,9 +1,6 @@
 import pytest
-from fastapi.testclient import TestClient
-from app.main import app
-from database.db import get_db, SessionLocal
+from database.db import get_db
 from models.user import User
-from app.auth_utils import hash_password
 
 def test_full_auth_flow(client, test_db):
     # 1. Verify user exists in DB (seeded in conftest)

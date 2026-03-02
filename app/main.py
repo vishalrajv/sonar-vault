@@ -6,9 +6,10 @@ app = FastAPI(title="Sonar Vault")
 
 app.include_router(auth_router)
 
-# Serve frontend static files
-app.mount("/", StaticFiles(directory="frontend", html=True), name="static")
-
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
+
+# Serve frontend static files
+app.mount("/", StaticFiles(directory="frontend", html=True), name="static")
+
