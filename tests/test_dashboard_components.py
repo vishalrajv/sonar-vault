@@ -27,3 +27,12 @@ def test_filters_exist():
         assert "Ship Name" in content
         assert "Sonar Project" in content
         assert "<select" in content
+
+def test_charting_library_exists():
+    assert os.path.exists("frontend/static/js/charting-helper.js")
+
+def test_line_chart_exists():
+    with open("frontend/dashboard.html", "r") as f:
+        content = f.read()
+        assert 'id="line-chart"' in content
+        assert "Software Uploads Over Time" in content
