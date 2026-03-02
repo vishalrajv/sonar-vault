@@ -16,11 +16,11 @@
     - [x] Write unit tests for User model (TDD Red)
     - [x] Implement User model with role and password hash fields (TDD Green)
     - [x] Refactor and verify coverage
-- [~] Task: Authentication Logic
-    - [ ] Write unit tests for password hashing and verification (TDD Red)
-    - [ ] Implement bcrypt utility functions (TDD Green)
-    - [ ] Write tests for login API endpoint (TDD Red)
-    - [ ] Implement FastAPI login endpoint (TDD Green)
+- [x] Task: Authentication Logic [9785125]
+    - [x] Write unit tests for password hashing and verification (TDD Red)
+    - [x] Implement bcrypt utility functions (TDD Green)
+    - [x] Write tests for login API endpoint (TDD Red)
+    - [x] Implement FastAPI login endpoint (TDD Green)
 - [ ] Task: User Seeding Utility
     - [ ] Create a script in `/scripts` to seed initial Admin user
 - [ ] Task: Conductor - User Manual Verification 'Authentication Backend' (Protocol in workflow.md)
