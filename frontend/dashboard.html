@@ -53,9 +53,36 @@
 
             <!-- Main Content -->
             <main class="p-6">
-                <div class="mb-6">
-                    <h2 class="text-2xl font-bold text-gray-900">Dashboard Overview</h2>
-                    <p class="text-gray-500">Fleet-wide software state at a glance.</p>
+                <div class="mb-6 flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900">Dashboard Overview</h2>
+                        <p class="text-gray-500">Fleet-wide software state at a glance.</p>
+                    </div>
+
+                    <!-- Filters Header -->
+                    <div id="filters-header" class="mt-4 md:mt-0 flex flex-wrap gap-4">
+                        <div class="flex flex-col">
+                            <label class="text-xs font-semibold text-gray-500 uppercase mb-1">Ship Name</label>
+                            <select class="bg-white border border-gray-200 rounded px-3 py-1.5 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                <option>All Ships</option>
+                                <option>INS Vikrant</option>
+                                <option>INS Mysore</option>
+                                <option>INS Kalvari</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-xs font-semibold text-gray-500 uppercase mb-1">Sonar Project</label>
+                            <select class="bg-white border border-gray-200 rounded px-3 py-1.5 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                <option>All Projects</option>
+                                <option>HUMSA-NG</option>
+                                <option>USHUS-2</option>
+                                <option>MGER</option>
+                            </select>
+                        </div>
+                        <div class="flex items-end">
+                            <button class="bg-blue-600 text-white px-4 py-1.5 rounded text-sm font-medium hover:bg-blue-700 transition">Apply Filters</button>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Dashboard Content (Phase 2: Core UI Components) -->
