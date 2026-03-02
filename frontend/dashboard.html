@@ -101,7 +101,7 @@
                             </div>
                         </div>
 
-                        <!-- Pending Defects -->
+                        <!-- Pending Defects Card ... -->
                         <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex items-center">
                             <div class="p-3 rounded-full bg-yellow-100 text-yellow-600 mr-4">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -112,6 +112,65 @@
                                 <p class="text-sm font-medium text-gray-500">Pending Defects</p>
                                 <p class="text-2xl font-bold text-gray-900">12</p>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity Table -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+                            <h3 class="text-lg font-bold text-gray-900">Recent Activity</h3>
+                            <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-700">View All</a>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table id="activity-table" class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
+                                        <th class="px-6 py-3 font-semibold">Ship</th>
+                                        <th class="px-6 py-3 font-semibold">Project</th>
+                                        <th class="px-6 py-3 font-semibold">Version</th>
+                                        <th class="px-6 py-3 font-semibold">Date</th>
+                                        <th class="px-6 py-3 font-semibold">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100">
+                                    <tr class="hover:bg-gray-50 transition">
+                                        <td class="px-6 py-4 text-sm font-medium text-gray-900">INS Vikrant</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">HUMSA-NG</td>
+                                        <td class="px-6 py-4 text-sm font-mono text-blue-600">v2.4.1</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500">2026-03-01</td>
+                                        <td class="px-6 py-4 text-sm">
+                                            <span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Success</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 transition">
+                                        <td class="px-6 py-4 text-sm font-medium text-gray-900">INS Mysore</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">USHUS-2</td>
+                                        <td class="px-6 py-4 text-sm font-mono text-blue-600">v1.12.0</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500">2026-02-28</td>
+                                        <td class="px-6 py-4 text-sm">
+                                            <span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Success</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 transition">
+                                        <td class="px-6 py-4 text-sm font-medium text-gray-900">INS Kalvari</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">MGER</td>
+                                        <td class="px-6 py-4 text-sm font-mono text-blue-600">v3.0.5</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500">2026-02-27</td>
+                                        <td class="px-6 py-4 text-sm">
+                                            <span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-medium">Pending</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 transition">
+                                        <td class="px-6 py-4 text-sm font-medium text-gray-900">INS Vikramaditya</td>
+                                        <td class="px-6 py-4 text-sm text-gray-600">NACS</td>
+                                        <td class="px-6 py-4 text-sm font-mono text-blue-600">v4.2.0-rc1</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500">2026-02-25</td>
+                                        <td class="px-6 py-4 text-sm">
+                                            <span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Success</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
             </main>
