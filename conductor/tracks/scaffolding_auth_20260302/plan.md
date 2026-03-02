@@ -25,14 +25,14 @@
     - [x] Create a script in `/scripts` to seed initial Admin user
 - [x] Task: Conductor - User Manual Verification 'Authentication Backend' (Protocol in workflow.md) [9dce6c4]
 
-## Phase 3: Frontend & UI Scaffolding
+## Phase 3: Frontend & UI Scaffolding [checkpoint: 449b509]
 - [x] Task: Local Tailwind and Static Asset Setup [d955237]
     - [x] Download and bundle Tailwind CSS locally
     - [x] Setup base HTML structure in `/frontend`
 - [x] Task: Login UI Implementation [51d5c37]
     - [x] Create Tailwind-styled Login Page
     - [x] Implement client-side form handling and API call logic
-- [ ] Task: Conductor - User Manual Verification 'Frontend & UI Scaffolding' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Frontend & UI Scaffolding' (Protocol in workflow.md) [449b509]
 
 ## Phase 4: Integration & Acceptance
 - [ ] Task: End-to-End Verification
