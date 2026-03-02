@@ -2,7 +2,7 @@
 
 ## Phase 1: Setup & Scaffolding
 - [x] Task: Create a new dashboard HTML file (`frontend/dashboard.html`) and set up the basic structure. 64b2327
-- [ ] Task: Configure the Tailwind layout with a sidebar and main content area (sidebar-driven navigation).
+- [x] Task: Configure the Tailwind layout with a sidebar and main content area (sidebar-driven navigation). d808caa
 - [ ] Task: Integrate local assets (ensure icons and fonts are available offline).
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Setup & Scaffolding' (Protocol in workflow.md)
 
