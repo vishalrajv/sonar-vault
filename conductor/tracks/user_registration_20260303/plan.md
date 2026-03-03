@@ -13,11 +13,18 @@
 - [x] Task: Verify registration sets `is_active=False` and `is_approved=False`.
 - [x] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
 
-## Phase 3: Admin Approval API (TDD)
+## Phase 3: Admin Approval API (TDD) [checkpoint: acff84e]
 *Goal: Implement administrative endpoints for managing pending users.*
-- [ ] Task: Write failing unit tests for `GET /api/v1/admin/pending-users` and `POST /api/v1/admin/approve-user/{id}` (check RBAC - only admins).
-- [ ] Task: Implement admin endpoints in `api/v1/auth.py`.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
+- [x] Task: Write failing unit tests for `GET /api/v1/admin/pending-users` and `POST /api/v1/admin/approve-user/{id}` (check RBAC - only admins).
+- [x] Task: Implement admin endpoints in `api/v1/auth.py`.
+- [x] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
 
 ## Phase 4: Auth and Login Logic Updates (TDD)
+*Goal: Transition login to use Staff Number and enforce approval checks.*
+- [ ] Task: Write failing tests for login using Staff Number and rejecting unapproved users.
+- [ ] Task: Update `login` endpoint in `api/v1/auth.py`.
+- [ ] Task: Update `get_current_user` dependency to handle new schema.
+- [ ] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
+
+## Phase 5: Frontend - User Registration
 ...
