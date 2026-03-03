@@ -2,7 +2,7 @@
 
 ## Phase 1: Database & Model Updates
 *Goal: Prepare the database to track active session IDs for concurrency control.*
-- [ ] **Task:** Update `models/user.py` to include `current_session_id` (String, Nullable).
+- [x] **Task:** Update `models/user.py` to include `current_session_id` (String, Nullable). d2393dd
 - [ ] **Task:** Run database migration or update schema to reflect new field.
 - [ ] **Task:** Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
 
