@@ -149,3 +149,20 @@ def test_login_remember_me_expiration(db_session):
     
     # Long-lived should be significantly later than standard
     assert exp > exp_std
+
+def test_dashboard_protected_by_session(db_session):
+    """Verify that /dashboard requires a valid session and checks concurrency."""
+    # Try without token
+    resp = client.get("/dashboard")
+    assert resp.status_code == 401
+    
+    # Try with valid token
+    resp_login = client.post("/api/v1/login", json={"username": "testuser", "password": "testpass"})
+    token = resp_login.json()["access_token"]
+    resp_dash = client.get("/dashboard", headers={"Authorization": f"Bearer {token}"})
+    assert resp_dash.status_code == 200
+    
+    # Invalidate by new login
+    client.post("/api/v1/login", json={"username": "testuser", "password": "testpass"})
+    resp_invalid = client.get("/dashboard", headers={"Authorization": f"Bearer {token}"})
+    assert resp_invalid.status_code == 401
