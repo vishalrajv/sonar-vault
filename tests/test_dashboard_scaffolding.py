@@ -60,9 +60,11 @@ def test_js_initialization():
   """Verifies that key JS elements are initialized in dashboard.js."""
   with open("frontend/static/js/dashboard.js", "r") as f:
     content = f.read()
-    assert "sidebarToggle" in content
-    assert "ChartingHelper" in content
-    assert "drawLineChart" in content
+    assert "globalSearch" in content
+    assert "fleetData" in content
+    assert "renderTree" in content
+    assert "statsData" in content
+    assert "fleetStatusData" in content
 
 def main():
   """Main entry point for running tests manually."""
