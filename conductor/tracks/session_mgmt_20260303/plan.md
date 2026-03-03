@@ -17,7 +17,7 @@
 - [x] **Task:** Implement: Session status endpoint. 7402a0e
 - [x] **Task:** Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
 
-## Phase 3: Security Middleware & Token Logic
+## Phase 3: Security Middleware & Token Logic [checkpoint: dd13efc]
 *Goal: Enforce session validity on protected routes and handle "Remember Me".*
 - [x] **Task:** Update `app/token_utils.py` to handle `expires_delta` for "Remember Me" (e.g., 7 days vs 8 hours). 6b3cb2e
 - [x] **Task:** Implement FastAPI dependency `get_current_active_user` that checks `current_session_id` against the token's JTI. a963fb7
@@ -26,7 +26,7 @@
 
 ## Phase 4: Frontend Logic (Session Control)
 *Goal: Implement idle timeout, "Remember Me" UI, and automatic logout.*
-- [ ] **Task:** Update `login.html` and `login.js` to include and handle the "Remember Me" checkbox.
+- [~] **Task:** Update `login.html` and `login.js` to include and handle the "Remember Me" checkbox.
 - [ ] **Task:** Implement `session-manager.js` to handle the 30-minute idle timeout (resetting on mouse/keyboard events).
 - [ ] **Task:** Add a 2-minute "Session Expiring" warning modal/notification.
 - [ ] **Task:** Update `dashboard.js` to integrate with the session manager and handle 401 redirects.
