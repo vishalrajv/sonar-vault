@@ -15,7 +15,21 @@ def test_dashboard_html_structure():
     assert "Dashboard" in content
     assert "static/js/dashboard.js" in content
     assert 'id="sidebar"' in content
-    assert 'id="sidebar-toggle"' in content
+    # New design requirements
+    assert 'id="sidebar-tree"' in content
+    assert 'id="global-search"' in content
+    assert 'id="user-profile-menu"' in content
+    assert 'id="stats-cards-container"' in content
+    assert 'id="fleet-status-widget"' in content
+
+def test_dashboard_theme_colors():
+  """Verifies the dashboard theme colors from the design doc."""
+  with open("frontend/dashboard.html", "r") as f:
+    content = f.read()
+    # Design doc specifies Emerald-900 (#064E3B) for sidebar and Emerald-600 for active stats
+    # We'll check for the tailwind class equivalents if they are used directly in HTML
+    # or just check if the Emerald palette is present.
+    assert "emerald-900" in content.lower() or "emerald-600" in content.lower()
 
 def test_dashboard_js_exists():
   """Verifies that the dashboard JS file exists."""
