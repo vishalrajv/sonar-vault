@@ -2,9 +2,9 @@
 
 ## Phase 1: Preparation & Environment Setup
 *Goal: Download Bootstrap 5.3.3 and prepare the project structure for migration.*
-- [ ] **Task:** Download Bootstrap 5.3.3 (Compiled CSS and JS) and Popper.js 2.11.8.
-- [ ] **Task:** Create the directory `frontend/static/vendor/bootstrap/` and store the downloaded assets.
-- [ ] **Task:** Update `frontend/index.html` to include links to the local Bootstrap CSS/JS files.
+- [x] **Task:** Download Bootstrap 5.3.3 (Compiled CSS and JS) and Popper.js 2.11.8.
+- [x] **Task:** Create the directory `frontend/static/vendor/bootstrap/` and store the downloaded assets.
+- [x] **Task:** Update `frontend/index.html` to include links to the local Bootstrap CSS/JS files.
 - [ ] **Task:** Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
 
 ## Phase 2: Login Page Styling (Proof of Concept)
