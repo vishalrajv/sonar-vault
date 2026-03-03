@@ -24,5 +24,10 @@ def login(user_credentials: UserLogin, db: Session = Depends(get_db)):
             detail="Incorrect username or password",
         )
 
-    access_token = create_access_token(data={"sub": user.username, "role": user.role})
+    access_token, jti = create_access_token(data={"sub": user.username, "role": user.role})
+    
+    # Update current_session_id for concurrency control
+    user.current_session_id = jti
+    db.commit()
+    
     return {"access_token": access_token, "token_type": "bearer"}

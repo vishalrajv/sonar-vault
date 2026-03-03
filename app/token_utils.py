@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 import os
+import uuid
 from jose import JWTError, jwt
 from app.auth_utils import verify_password
 
@@ -15,6 +16,10 @@ def create_access_token(data: dict, expires_delta: timedelta = None):
         expire = datetime.utcnow() + expires_delta
     else:
         expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    to_encode.update({"exp": expire})
+    
+    # Generate unique session ID
+    jti = str(uuid.uuid4())
+    to_encode.update({"exp": expire, "jti": jti})
+    
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt
+    return encoded_jwt, jti
