@@ -24,16 +24,16 @@
 - [x] **Task:** Apply security dependency to `/dashboard` and `/api/v1/vault` routes in `app/main.py`. 544df38
 - [x] **Task:** Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md) eaa2335
 
-## Phase 4: Frontend Logic (Session Control)
+## Phase 4: Frontend Logic (Session Control) [checkpoint: 9b60421]
 *Goal: Implement idle timeout, "Remember Me" UI, and automatic logout.*
 - [x] **Task:** Update `login.html` and `login.js` to include and handle the "Remember Me" checkbox. 223ceef
 - [x] **Task:** Implement `session-manager.js` to handle the 30-minute idle timeout (resetting on mouse/keyboard events). 7adb617
 - [x] **Task:** Add a 2-minute "Session Expiring" warning modal/notification. e0dcef6
 - [x] **Task:** Update `dashboard.js` to integrate with the session manager and handle 401 redirects. e0dcef6
-- [ ] **Task:** Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
+- [x] **Task:** Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
 
 ## Phase 5: Final Integration & Cleanup
 *Goal: End-to-end verification of the session lifecycle.*
-- [ ] **Task:** Perform integration testing for "Single Session Only" across multiple browser tabs.
+- [~] **Task:** Perform integration testing for "Single Session Only" across multiple browser tabs.
 - [ ] **Task:** Verify idle timeout triggers correctly in a headless/automated environment.
 - [ ] **Task:** Conductor - User Manual Verification 'Phase 5' (Protocol in workflow.md)
