@@ -38,3 +38,5 @@
 - [x] **Task:** Verify idle timeout triggers correctly in a headless/automated environment. 7adb617
 - [x] **Task:** Conductor - User Manual Verification 'Phase 5' (Protocol in workflow.md)
 
+## Phase: Review Fixes
+- [x] Task: Apply review suggestions 0a9dad4
