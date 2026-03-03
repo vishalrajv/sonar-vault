@@ -8,8 +8,8 @@ def test_login_page_bootstrap_links():
     response = client.get("/login")
     assert response.status_code == 200
     content = response.text
-    assert 'href="/static/vendor/bootstrap/bootstrap.min.css"' in content
-    assert 'src="/static/vendor/bootstrap/bootstrap.bundle.min.js"' in content
+    assert 'href="static/vendor/bootstrap/bootstrap.min.css"' in content
+    assert 'src="static/vendor/bootstrap/bootstrap.bundle.min.js"' in content
     assert 'static/css/tailwind.css' not in content
 
 def test_login_page_bootstrap_classes():

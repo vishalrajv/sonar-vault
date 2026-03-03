@@ -29,7 +29,7 @@ def test_index_html_bootstrap_links():
     response = client.get("/")
     assert response.status_code == 200
     content = response.text
-    assert 'href="/static/vendor/bootstrap/bootstrap.min.css"' in content
-    assert 'src="/static/vendor/bootstrap/bootstrap.bundle.min.js"' in content
+    assert 'href="static/vendor/bootstrap/bootstrap.min.css"' in content
+    assert 'src="static/vendor/bootstrap/bootstrap.bundle.min.js"' in content
     assert "bg-light" in content
     assert "d-flex" in content

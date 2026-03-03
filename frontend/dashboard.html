@@ -8,38 +8,58 @@
   <link href="static/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
   <script src="static/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
   <style>
-    /* Custom shadows and utilities from design doc */
+    /* Sonar Vault Theme Variables */
+    :root {
+      --sv-emerald-900: #064e3b;
+      --sv-emerald-800: #065f46;
+      --sv-emerald-700: #047857;
+      --sv-emerald-600: #059669;
+      --sv-emerald-500: #10b981;
+      --sv-emerald-400: #34d399;
+    }
+
+    /* Custom shadows and utilities */
     .shadow-soft {
       box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
     }
     .rounded-2xl {
       border-radius: 1rem;
     }
+
+    /* Theme Overrides */
+    .bg-sv-sidebar { background-color: var(--sv-emerald-900) !important; }
+    .bg-sv-emerald-600 { background-color: var(--sv-emerald-600) !important; }
+    .text-sv-emerald-400 { color: var(--sv-emerald-400) !important; }
+    .text-sv-emerald-500 { color: var(--sv-emerald-500) !important; }
+    .nav-link.active.sv-active { background-color: rgba(6, 78, 59, 0.5) !important; }
+    .bg-sv-card-dark { background-color: rgba(6, 78, 59, 0.4) !important; }
+    .btn-sv-primary { background-color: var(--sv-emerald-900) !important; color: white !important; border: none; }
+    .btn-sv-primary:hover { background-color: var(--sv-emerald-800) !important; }
   </style>
 </head>
 <body class="bg-light text-dark font-sans">
   <div class="d-flex h-100 overflow-hidden vh-100">
     <!-- Sidebar -->
-    <aside id="sidebar" class="bg-dark text-white flex-shrink-0 d-flex flex-column transition-all" style="width: 280px; background-color: #064e3b !important;">
+    <aside id="sidebar" class="bg-dark text-white flex-shrink-0 d-flex flex-column transition-all bg-sv-sidebar" style="width: 280px;">
       <!-- Logo Area -->
       <div class="p-4 d-flex align-items-center gap-3 border-bottom border-secondary border-opacity-25">
-        <div class="bg-success rounded-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 40px; height: 40px; background-color: #059669 !important;">
+        <div class="rounded-3 d-flex align-items-center justify-content-center shadow-sm bg-sv-emerald-600" style="width: 40px; height: 40px;">
           <svg class="text-white" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
           </svg>
         </div>
         <div>
           <h1 class="h5 fw-bold mb-0 tracking-tight text-white">SONAR VAULT</h1>
-          <p class="small text-success fw-medium text-uppercase tracking-widest mb-0" style="font-size: 10px; color: #34d399 !important;">Repository Platform</p>
+          <p class="small fw-medium text-uppercase tracking-widest mb-0 text-sv-emerald-400" style="font-size: 10px;">Repository Platform</p>
         </div>
       </div>
 
       <!-- Navigation Menu -->
       <nav class="flex-grow-1 px-3 py-4 overflow-auto">
-        <div class="small fw-bold text-success text-uppercase tracking-wider px-3 mb-2" style="color: #10b981 !important;">Menu</div>
+        <div class="small fw-bold text-uppercase tracking-wider px-3 mb-2 text-sv-emerald-500">Menu</div>
         <div class="nav flex-column nav-pills gap-1">
-          <a href="dashboard.html" class="nav-link active d-flex align-items-center gap-3 px-3 py-2 rounded-3 text-white border border-secondary border-opacity-25 shadow-sm" style="background-color: rgba(6, 78, 59, 0.5) !important;">
-            <svg class="text-success" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #34d399 !important;">
+          <a href="dashboard.html" class="nav-link active d-flex align-items-center gap-3 px-3 py-2 rounded-3 text-white border border-secondary border-opacity-25 shadow-sm sv-active">
+            <svg class="text-sv-emerald-400" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
             </svg>
             <span class="fw-medium">Dashboard</span>
@@ -66,7 +86,7 @@
 
         <!-- Hierarchical Tree View -->
         <div class="mt-5 pt-4 border-top border-secondary border-opacity-25">
-          <div class="small fw-bold text-success text-uppercase tracking-wider px-3 mb-3" style="color: #10b981 !important;">Fleet Hierarchy</div>
+          <div class="small fw-bold text-uppercase tracking-wider px-3 mb-3 text-sv-emerald-500">Fleet Hierarchy</div>
           <div id="sidebar-tree" class="px-2">
             <!-- Tree will be rendered here by JS -->
             <div class="text-success small fst-italic px-3 opacity-50">Loading tree...</div>
@@ -76,7 +96,7 @@
 
       <!-- Contextual Card -->
       <div class="p-3">
-        <div class="rounded-4 p-3 border border-secondary border-opacity-25" style="background-color: rgba(6, 78, 59, 0.4) !important;">
+        <div class="rounded-4 p-3 border border-secondary border-opacity-25 bg-sv-card-dark">
           <div class="d-flex align-items-center gap-2 mb-2">
             <div class="rounded-circle bg-success" style="width: 8px; height: 8px;"></div>
             <span class="small fw-bold text-white-50 text-uppercase tracking-wider" style="font-size: 11px;">System Health</span>
@@ -143,13 +163,13 @@
             </div>
             <div class="d-flex align-items-center gap-3">
               <button class="btn btn-white px-4 py-2 fw-bold rounded-3 shadow-sm border border-light d-flex align-items-center gap-2 bg-white">
-                <svg class="text-success" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #059669 !important;">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #059669 !important;">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
                 </svg>
                 View Fleet Tree
               </button>
-              <button class="btn btn-dark px-4 py-2 fw-bold rounded-3 shadow d-flex align-items-center gap-2" style="background-color: #064e3b !important; border: none;">
-                <svg class="text-success" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #34d399 !important;">
+              <button class="btn btn-sv-primary px-4 py-2 fw-bold rounded-3 shadow d-flex align-items-center gap-2">
+                <svg class="text-sv-emerald-400" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
                 Upload Binary
@@ -236,7 +256,7 @@
           <h3 class="h4 fw-bold text-dark text-center mb-2 tracking-tight" id="sessionWarningModalLabel">Session Expiring</h3>
           <p class="text-secondary text-center mb-4 pb-2 fw-medium">Your session is about to expire due to inactivity. You will be automatically logged out in 2 minutes.</p>
           <div class="d-grid gap-3">
-            <button id="extend-session-btn" type="button" class="btn btn-dark py-3 rounded-3 fw-bold shadow-sm" style="background-color: #064e3b !important; border: none;">
+            <button id="extend-session-btn" type="button" class="btn btn-sv-primary py-3 rounded-3 fw-bold shadow-sm">
               Stay Logged In
             </button>
             <button id="logout-now-btn" type="button" class="btn btn-light py-3 rounded-3 fw-bold border-light">
