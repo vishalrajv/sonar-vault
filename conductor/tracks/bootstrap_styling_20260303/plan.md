@@ -7,14 +7,14 @@
 - [x] **Task:** Update `frontend/index.html` to include links to the local Bootstrap CSS/JS files.
 - [ ] **Task:** Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
 
-## Phase 2: Login Page Styling (Proof of Concept)
+## Phase 2: Login Page Styling (Proof of Concept) [checkpoint: 161165b]
 *Goal: Stylize the login page using Bootstrap as a baseline for the full migration.*
 - [x] **Task:** Update `frontend/login.html` to use Bootstrap's layout and form components.
 - [x] **Task:** Remove all Tailwind CSS classes from `frontend/login.html`.
 - [x] **Task:** Verify that the "Remember Me" checkbox and Login button are styled correctly.
 - [ ] **Task:** Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
 
-## Phase 3: Dashboard Layout Migration
+## Phase 3: Dashboard Layout Migration [checkpoint: 161165b]
 - [x] **Task:** Redesign the **Navbar** and **Sidebar** in `frontend/dashboard.html` using Bootstrap.
 - [x] **Task:** Implement the main content area with Bootstrap's grid system (`container-fluid`, `row`, `col`).
 - [x] **Task:** Convert **Modals** and **Alerts** in `frontend/dashboard.html` to Bootstrap components.
