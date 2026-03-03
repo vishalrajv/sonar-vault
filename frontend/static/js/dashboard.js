@@ -1,4 +1,5 @@
 import {ChartingHelper} from './charting-helper.js';
+import SessionManager from './session-manager.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // Check for authentication
@@ -8,7 +9,42 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  // Verify session with server
+  // UI Elements for session management
+  const warningModal = document.getElementById('session-warning-modal');
+  const extendBtn = document.getElementById('extend-session-btn');
+  const logoutNowBtn = document.getElementById('logout-now-btn');
+
+  // Initialize Session Manager
+  const sessionManager = new SessionManager({
+    onWarning: () => {
+      warningModal.classList.remove('hidden');
+    },
+    onLogout: () => {
+      // SessionManager has a default logout, but we can customize
+      sessionManager.defaultLogout();
+    }
+  });
+
+  // Modal Button Handlers
+  if (extendBtn) {
+    extendBtn.addEventListener('click', () => {
+      warningModal.classList.add('hidden');
+      sessionManager.resetTimer();
+      // Optional: Ping server to keep session alive if using server-side session sliding
+      fetch('/api/v1/session/status', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      }).catch(console.error);
+    });
+  }
+
+  if (logoutNowBtn) {
+    logoutNowBtn.addEventListener('click', () => {
+      sessionManager.defaultLogout();
+    });
+  }
+
+  // Verify session with server on load
+
   try {
     const response = await fetch('/api/v1/session/status', {
       headers: {
