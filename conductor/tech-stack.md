@@ -5,7 +5,7 @@
 - **Database:** SQLite
 - **ORM:** SQLAlchemy
 - **Environment Management:** python-dotenv
-- **Authentication:** bcrypt, python-jose[cryptography]
+- **Authentication:** bcrypt, python-jose[cryptography], JTI-based Concurrency Control
 - **API Testing:** httpx
 
 ## Frontend
