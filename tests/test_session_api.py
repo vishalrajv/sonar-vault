@@ -91,3 +91,42 @@ def test_concurrency_second_login_invalidates_first(db_session):
     user = db_session.query(User).filter(User.username == "testuser").first()
     assert user.current_session_id == jti2
     assert user.current_session_id != jti1
+
+def test_logout_clears_session_id(db_session):
+    """Verify that logout clears the user's current_session_id."""
+    # Login
+    resp = client.post("/api/v1/login", json={"username": "testuser", "password": "testpass"})
+    token = resp.json()["access_token"]
+    
+    # Logout
+    logout_resp = client.post("/api/v1/logout", headers={"Authorization": f"Bearer {token}"})
+    assert logout_resp.status_code == 200
+    
+    # Check database
+    user = db_session.query(User).filter(User.username == "testuser").first()
+    assert user.current_session_id is None
+
+def test_session_status_valid(db_session):
+    """Verify that /session/status returns 200 for a valid session."""
+    # Login
+    resp = client.post("/api/v1/login", json={"username": "testuser", "password": "testpass"})
+    token = resp.json()["access_token"]
+    
+    # Check status
+    status_resp = client.get("/api/v1/session/status", headers={"Authorization": f"Bearer {token}"})
+    assert status_resp.status_code == 200
+    assert status_resp.json()["username"] == "testuser"
+
+def test_session_status_invalidated_by_concurrent_login(db_session):
+    """Verify that an old token is rejected after a new login occurs."""
+    # First login
+    resp1 = client.post("/api/v1/login", json={"username": "testuser", "password": "testpass"})
+    token1 = resp1.json()["access_token"]
+    
+    # Second login
+    client.post("/api/v1/login", json={"username": "testuser", "password": "testpass"})
+    
+    # Check status with first token
+    status_resp = client.get("/api/v1/session/status", headers={"Authorization": f"Bearer {token1}"})
+    assert status_resp.status_code == 401
+    assert "session invalidated" in status_resp.json()["detail"].lower()
