@@ -1,15 +1,19 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
+from datetime import timedelta
 from jose import JWTError, jwt
 from database.db import get_db
 from models.user import User
 from app.schemas import UserLogin, Token
 from app.auth_utils import verify_password
-from app.token_utils import create_access_token, SECRET_KEY, ALGORITHM
+from app.token_utils import create_access_token, SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
 
 router = APIRouter(prefix="/api/v1", tags=["auth"])
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/v1/login")
+
+# Define expiration for Remember Me (e.g., 7 days)
+REMEMBER_ME_EXPIRE_DAYS = 7
 
 async def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     credentials_exception = HTTPException(
@@ -56,7 +60,16 @@ def login(user_credentials: UserLogin, db: Session = Depends(get_db)):
             detail="Incorrect username or password",
         )
 
-    access_token, jti = create_access_token(data={"sub": user.username, "role": user.role})
+    # Determine token expiration
+    if user_credentials.remember_me:
+        expires_delta = timedelta(days=REMEMBER_ME_EXPIRE_DAYS)
+    else:
+        expires_delta = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+
+    access_token, jti = create_access_token(
+        data={"sub": user.username, "role": user.role},
+        expires_delta=expires_delta
+    )
     
     # Update current_session_id for concurrency control
     user.current_session_id = jti

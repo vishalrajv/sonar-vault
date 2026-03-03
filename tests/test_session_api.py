@@ -130,3 +130,22 @@ def test_session_status_invalidated_by_concurrent_login(db_session):
     status_resp = client.get("/api/v1/session/status", headers={"Authorization": f"Bearer {token1}"})
     assert status_resp.status_code == 401
     assert "session invalidated" in status_resp.json()["detail"].lower()
+
+def test_login_remember_me_expiration(db_session):
+    """Verify that login with remember_me=True produces a long-lived token."""
+    # Login with remember_me=True
+    response = client.post("/api/v1/login", json={"username": "testuser", "password": "testpass", "remember_me": True})
+    assert response.status_code == 200
+    token = response.json()["access_token"]
+    
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    exp = payload.get("exp")
+    
+    # Login without remember_me
+    response_std = client.post("/api/v1/login", json={"username": "testuser", "password": "testpass", "remember_me": False})
+    token_std = response_std.json()["access_token"]
+    payload_std = jwt.decode(token_std, SECRET_KEY, algorithms=[ALGORITHM])
+    exp_std = payload_std.get("exp")
+    
+    # Long-lived should be significantly later than standard
+    assert exp > exp_std
