@@ -11,10 +11,10 @@
 - [x] **Task:** Update `api/v1/auth.py` Login endpoint to generate a unique session ID (JTI) and update the user record. f8b5b2f
 - [x] **Task:** Write Tests: Verify that a second login invalidates the previous session ID in the database. f8b5b2f
 - [x] **Task:** Implement: Concurrency logic in Login. f8b5b2f
-- [ ] **Task:** Write Tests: `/api/v1/logout` clears the session ID and returns 200.
-- [ ] **Task:** Implement: Logout endpoint.
-- [ ] **Task:** Write Tests: `/api/v1/session/status` returns user info if valid, 401 if invalid.
-- [ ] **Task:** Implement: Session status endpoint.
+- [x] **Task:** Write Tests: `/api/v1/logout` clears the session ID and returns 200. 7402a0e
+- [x] **Task:** Implement: Logout endpoint. 7402a0e
+- [x] **Task:** Write Tests: `/api/v1/session/status` returns user info if valid, 401 if invalid. 7402a0e
+- [x] **Task:** Implement: Session status endpoint. 7402a0e
 - [ ] **Task:** Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
 
 ## Phase 3: Security Middleware & Token Logic
