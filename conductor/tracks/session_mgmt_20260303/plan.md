@@ -28,8 +28,8 @@
 *Goal: Implement idle timeout, "Remember Me" UI, and automatic logout.*
 - [x] **Task:** Update `login.html` and `login.js` to include and handle the "Remember Me" checkbox. 223ceef
 - [x] **Task:** Implement `session-manager.js` to handle the 30-minute idle timeout (resetting on mouse/keyboard events). 7adb617
-- [~] **Task:** Add a 2-minute "Session Expiring" warning modal/notification.
-- [ ] **Task:** Update `dashboard.js` to integrate with the session manager and handle 401 redirects.
+- [x] **Task:** Add a 2-minute "Session Expiring" warning modal/notification. e0dcef6
+- [x] **Task:** Update `dashboard.js` to integrate with the session manager and handle 401 redirects. e0dcef6
 - [ ] **Task:** Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
 
 ## Phase 5: Final Integration & Cleanup
