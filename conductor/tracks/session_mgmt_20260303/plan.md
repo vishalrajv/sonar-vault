@@ -6,7 +6,7 @@
 - [x] **Task:** Run database migration or update schema to reflect new field. d1042d1
 - [x] **Task:** Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
 
-## Phase 2: Backend API Enhancements
+## Phase 2: Backend API Enhancements [checkpoint: dee6022]
 *Goal: Implement logout, concurrency logic, and session status checks.*
 - [x] **Task:** Update `api/v1/auth.py` Login endpoint to generate a unique session ID (JTI) and update the user record. f8b5b2f
 - [x] **Task:** Write Tests: Verify that a second login invalidates the previous session ID in the database. f8b5b2f
@@ -15,11 +15,11 @@
 - [x] **Task:** Implement: Logout endpoint. 7402a0e
 - [x] **Task:** Write Tests: `/api/v1/session/status` returns user info if valid, 401 if invalid. 7402a0e
 - [x] **Task:** Implement: Session status endpoint. 7402a0e
-- [ ] **Task:** Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
+- [x] **Task:** Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
 
 ## Phase 3: Security Middleware & Token Logic
 *Goal: Enforce session validity on protected routes and handle "Remember Me".*
-- [ ] **Task:** Update `app/token_utils.py` to handle `expires_delta` for "Remember Me" (e.g., 7 days vs 8 hours).
+- [~] **Task:** Update `app/token_utils.py` to handle `expires_delta` for "Remember Me" (e.g., 7 days vs 8 hours).
 - [ ] **Task:** Implement FastAPI dependency `get_current_active_user` that checks `current_session_id` against the token's JTI.
 - [ ] **Task:** Apply security dependency to `/dashboard` and `/api/v1/vault` routes in `app/main.py`.
 - [ ] **Task:** Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
