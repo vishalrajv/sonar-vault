@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('password').value;
         const rememberMe = document.getElementById('remember_me').checked;
         
-        errorMessage.classList.add('hidden');
+        errorMessage.classList.add('d-none');
         
         try {
             const response = await fetch('/api/v1/login', {
@@ -43,12 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 // Error from server
                 errorMessage.textContent = data.detail || 'Login failed. Please try again.';
-                errorMessage.classList.remove('hidden');
+                errorMessage.classList.remove('d-none');
             }
         } catch (error) {
             console.error('Login error:', error);
             errorMessage.textContent = 'Network error. Please ensure the server is running.';
-            errorMessage.classList.remove('hidden');
+            errorMessage.classList.remove('d-none');
         }
     });
 });

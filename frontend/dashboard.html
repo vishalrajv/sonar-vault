@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sonar Vault - Dashboard</title>
-  <link rel="stylesheet" href="static/css/tailwind.css">
+  <!-- Bootstrap 5.3.3 Local -->
+  <link href="static/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <script src="static/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
   <style>
     /* Custom shadows and utilities from design doc */
     .shadow-soft {
@@ -15,131 +17,139 @@
     }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans">
-  <div class="flex h-screen overflow-hidden">
+<body class="bg-light text-dark font-sans">
+  <div class="d-flex h-100 overflow-hidden vh-100">
     <!-- Sidebar -->
-    <aside id="sidebar" class="w-72 bg-emerald-900 text-white flex-shrink-0 flex flex-col transition-all duration-300">
+    <aside id="sidebar" class="bg-dark text-white flex-shrink-0 d-flex flex-column transition-all" style="width: 280px; background-color: #064e3b !important;">
       <!-- Logo Area -->
-      <div class="p-8 flex items-center gap-3">
-        <div class="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
-          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <div class="p-4 d-flex align-items-center gap-3 border-bottom border-secondary border-opacity-25">
+        <div class="bg-success rounded-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 40px; height: 40px; background-color: #059669 !important;">
+          <svg class="text-white" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
           </svg>
         </div>
         <div>
-          <h1 class="text-xl font-bold tracking-tight">SONAR VAULT</h1>
-          <p class="text-[10px] text-emerald-400 font-medium uppercase tracking-widest">Repository Platform</p>
+          <h1 class="h5 fw-bold mb-0 tracking-tight text-white">SONAR VAULT</h1>
+          <p class="small text-success fw-medium text-uppercase tracking-widest mb-0" style="font-size: 10px; color: #34d399 !important;">Repository Platform</p>
         </div>
       </div>
 
       <!-- Navigation Menu -->
-      <nav class="flex-1 px-4 py-2 space-y-1 overflow-y-auto">
-        <div class="text-xs font-semibold text-emerald-500 uppercase tracking-wider px-4 mb-2">Menu</div>
-        <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 bg-emerald-800/50 text-white rounded-xl transition-all border border-emerald-700/50 shadow-sm">
-          <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-          </svg>
-          <span class="font-medium">Dashboard</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 px-4 py-3 text-emerald-300 hover:bg-emerald-800/30 hover:text-white rounded-xl transition-all">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-          </svg>
-          <span class="font-medium">Vault (Files)</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 px-4 py-3 text-emerald-300 hover:bg-emerald-800/30 hover:text-white rounded-xl transition-all">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-          </svg>
-          <span class="font-medium">Defect Tracker</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 px-4 py-3 text-emerald-300 hover:bg-emerald-800/30 hover:text-white rounded-xl transition-all">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-          </svg>
-          <span class="font-medium">Analytics</span>
-        </a>
+      <nav class="flex-grow-1 px-3 py-4 overflow-auto">
+        <div class="small fw-bold text-success text-uppercase tracking-wider px-3 mb-2" style="color: #10b981 !important;">Menu</div>
+        <div class="nav flex-column nav-pills gap-1">
+          <a href="dashboard.html" class="nav-link active d-flex align-items-center gap-3 px-3 py-2 rounded-3 text-white border border-secondary border-opacity-25 shadow-sm" style="background-color: rgba(6, 78, 59, 0.5) !important;">
+            <svg class="text-success" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #34d399 !important;">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            <span class="fw-medium">Dashboard</span>
+          </a>
+          <a href="#" class="nav-link d-flex align-items-center gap-3 px-3 py-2 rounded-3 text-white-50 hover-bg-dark transition-all">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+            </svg>
+            <span class="fw-medium text-white-50">Vault (Files)</span>
+          </a>
+          <a href="#" class="nav-link d-flex align-items-center gap-3 px-3 py-2 rounded-3 text-white-50 hover-bg-dark transition-all">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+            </svg>
+            <span class="fw-medium text-white-50">Defect Tracker</span>
+          </a>
+          <a href="#" class="nav-link d-flex align-items-center gap-3 px-3 py-2 rounded-3 text-white-50 hover-bg-dark transition-all">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+            <span class="fw-medium text-white-50">Analytics</span>
+          </a>
+        </div>
 
         <!-- Hierarchical Tree View -->
-        <div class="mt-8 pt-6 border-t border-emerald-800/50">
-          <div class="text-xs font-semibold text-emerald-500 uppercase tracking-wider px-4 mb-4">Fleet Hierarchy</div>
-          <div id="sidebar-tree" class="px-2 space-y-1">
+        <div class="mt-5 pt-4 border-top border-secondary border-opacity-25">
+          <div class="small fw-bold text-success text-uppercase tracking-wider px-3 mb-3" style="color: #10b981 !important;">Fleet Hierarchy</div>
+          <div id="sidebar-tree" class="px-2">
             <!-- Tree will be rendered here by JS -->
-            <div class="animate-pulse px-4 text-emerald-700 text-sm italic">Loading tree...</div>
+            <div class="text-success small fst-italic px-3 opacity-50">Loading tree...</div>
           </div>
         </div>
       </nav>
 
       <!-- Contextual Card -->
-      <div class="p-4">
-        <div class="bg-emerald-800/40 border border-emerald-700/50 rounded-2xl p-4">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-            <span class="text-xs font-bold text-emerald-100 uppercase tracking-wider">System Health</span>
+      <div class="p-3">
+        <div class="rounded-4 p-3 border border-secondary border-opacity-25" style="background-color: rgba(6, 78, 59, 0.4) !important;">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <div class="rounded-circle bg-success" style="width: 8px; height: 8px;"></div>
+            <span class="small fw-bold text-white-50 text-uppercase tracking-wider" style="font-size: 11px;">System Health</span>
           </div>
-          <p class="text-[11px] text-emerald-300/80 leading-relaxed">Secure offline vault active. All systems synchronized locally.</p>
+          <p class="small text-white-50 mb-0" style="font-size: 11px; line-height: 1.5;">Secure offline vault active. All systems synchronized locally.</p>
         </div>
       </div>
     </aside>
 
     <!-- Main Content Area -->
-    <div class="flex-1 flex flex-col min-w-0 bg-gray-50 overflow-hidden">
+    <div class="flex-grow-1 d-flex flex-column min-width-0 bg-light overflow-hidden">
       <!-- Header -->
-      <header class="h-20 bg-white border-b border-gray-100 flex items-center justify-between px-8 shadow-sm z-10">
-        <!-- Global Search -->
-        <div class="flex-1 max-w-xl relative">
-          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
-          </div>
-          <input type="text" id="global-search" placeholder="Search Platforms, Projects, or Versions..." class="w-full pl-12 pr-16 py-3 bg-gray-50 border border-gray-100 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all shadow-inner">
-          <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-            <kbd class="px-2 py-1 text-[10px] font-bold text-gray-400 bg-white border border-gray-200 rounded-lg shadow-sm">⌘F</kbd>
-          </div>
-        </div>
-
-        <!-- Identity & Actions -->
-        <div class="flex items-center gap-6 ml-8">
-          <div class="flex items-center gap-3">
-            <button class="p-2.5 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-all relative">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+      <header class="navbar navbar-expand bg-white border-bottom px-4 h-20 shadow-sm z-3">
+        <div class="container-fluid gap-3">
+          <!-- Global Search -->
+          <div class="flex-grow-1 max-width-xl position-relative d-none d-md-block" style="max-width: 500px;">
+            <div class="position-absolute top-50 start-0 translate-middle-y ps-3 pointer-events-none">
+              <svg class="text-secondary" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
               </svg>
-              <span class="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
-            </button>
-          </div>
-          
-          <div id="user-profile-menu" class="flex items-center gap-4 pl-6 border-l border-gray-100">
-            <div class="text-right">
-              <p class="text-sm font-bold text-gray-900 leading-none">D&E Admin</p>
-              <p class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider mt-1">Design & Engineering</p>
             </div>
-            <div class="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold border-2 border-white shadow-soft">
-              DA
+            <input type="text" id="global-search" placeholder="Search Platforms, Projects, or Versions..." class="form-control ps-5 rounded-pill bg-light border-0 py-2 shadow-inner">
+          </div>
+
+          <!-- Identity & Actions -->
+          <div class="d-flex align-items-center gap-4 ms-auto">
+            <div class="d-flex">
+              <button class="btn btn-link p-2 text-secondary position-relative hover-bg-light rounded-3">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                </svg>
+                <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-1">
+                  <span class="visually-hidden">New alerts</span>
+                </span>
+              </button>
+            </div>
+            
+            <div id="user-profile-menu" class="d-flex align-items-center gap-3 ps-4 border-start border-light">
+              <div class="text-end d-none d-lg-block">
+                <p class="small fw-bold text-dark mb-0 line-height-1">D&E Admin</p>
+                <p class="fw-bold text-success text-uppercase tracking-wider mb-0" style="font-size: 10px; color: #059669 !important;">Design & Engineering</p>
+              </div>
+              <div class="rounded-3 bg-success-subtle d-flex align-items-center justify-content-center text-success fw-bold border border-white shadow-sm" style="width: 44px; height: 44px;">
+                DA
+              </div>
+              <button id="logout-btn" class="btn btn-link p-2 text-secondary hover-bg-danger-subtle hover-text-danger rounded-3" title="Logout">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
       </header>
 
       <!-- Main Content Container -->
-      <main class="flex-1 overflow-y-auto p-10">
-        <div class="max-w-7xl mx-auto space-y-10">
+      <main class="flex-grow-1 overflow-auto p-4 p-lg-5">
+        <div class="container-fluid max-width-7xl mx-auto">
           <!-- Title Section -->
-          <div class="flex items-end justify-between">
+          <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-5 gap-4">
             <div>
-              <h2 class="text-3xl font-black text-gray-900 tracking-tight">Dashboard Overview</h2>
-              <p class="text-gray-500 font-medium mt-1">Real-time status of the Sonar Vault fleet.</p>
+              <h2 class="h2 fw-black text-dark tracking-tight mb-1" style="font-weight: 900 !important;">Dashboard Overview</h2>
+              <p class="text-secondary fw-medium mb-0">Real-time status of the Sonar Vault fleet.</p>
             </div>
-            <div class="flex items-center gap-3">
-              <button class="px-6 py-3 bg-white text-gray-700 font-bold rounded-2xl shadow-soft border border-gray-100 hover:bg-gray-50 transition-all flex items-center gap-2">
-                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <div class="d-flex align-items-center gap-3">
+              <button class="btn btn-white px-4 py-2 fw-bold rounded-3 shadow-sm border border-light d-flex align-items-center gap-2 bg-white">
+                <svg class="text-success" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #059669 !important;">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
                 </svg>
                 View Fleet Tree
               </button>
-              <button class="px-6 py-3 bg-emerald-900 text-white font-bold rounded-2xl shadow-lg hover:bg-emerald-800 transition-all flex items-center gap-2">
-                <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <button class="btn btn-dark px-4 py-2 fw-bold rounded-3 shadow d-flex align-items-center gap-2" style="background-color: #064e3b !important; border: none;">
+                <svg class="text-success" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #34d399 !important;">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
                 Upload Binary
@@ -148,40 +158,93 @@
           </div>
 
           <!-- Stats Grid -->
-          <div id="stats-cards-container" class="grid grid-cols-3 gap-8">
+          <div id="stats-cards-container" class="row g-4 mb-5">
             <!-- JS will populate these -->
-            <div class="animate-pulse h-40 bg-white rounded-3xl border border-gray-100 shadow-soft"></div>
-            <div class="animate-pulse h-40 bg-white rounded-3xl border border-gray-100 shadow-soft"></div>
-            <div class="animate-pulse h-40 bg-white rounded-3xl border border-gray-100 shadow-soft"></div>
+            <div class="col-12 col-md-4">
+              <div class="placeholder-glow">
+                <div class="placeholder rounded-4 bg-white border border-light shadow-sm w-100" style="height: 160px;"></div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="placeholder-glow">
+                <div class="placeholder rounded-4 bg-white border border-light shadow-sm w-100" style="height: 160px;"></div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="placeholder-glow">
+                <div class="placeholder rounded-4 bg-white border border-light shadow-sm w-100" style="height: 160px;"></div>
+              </div>
+            </div>
           </div>
 
           <!-- Mid Section Grid -->
-          <div class="grid grid-cols-12 gap-8">
+          <div class="row g-4">
             <!-- Fleet Status Widget -->
-            <div id="fleet-status-widget" class="col-span-8 bg-white rounded-3xl border border-gray-100 shadow-soft p-8">
-              <div class="flex items-center justify-between mb-8">
-                <h3 class="text-xl font-bold text-gray-900">Fleet Update Status</h3>
-                <span class="px-4 py-1.5 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-full border border-emerald-100 uppercase tracking-widest">Active Projects</span>
-              </div>
-              <div class="space-y-6">
-                <!-- JS will populate these -->
-                <div class="animate-pulse h-20 bg-gray-50 rounded-2xl"></div>
-                <div class="animate-pulse h-20 bg-gray-50 rounded-2xl"></div>
+            <div class="col-12 col-lg-8">
+              <div id="fleet-status-widget" class="bg-white rounded-4 border border-light shadow-sm p-4 p-md-5 h-100">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                  <h3 class="h4 fw-bold text-dark mb-0">Fleet Update Status</h3>
+                  <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 rounded-pill fw-bold text-uppercase tracking-widest" style="font-size: 10px;">Active Projects</span>
+                </div>
+                <div class="d-flex flex-column gap-3">
+                  <!-- JS will populate these -->
+                  <div class="placeholder-glow">
+                    <div class="placeholder rounded-3 bg-light w-100" style="height: 80px;"></div>
+                  </div>
+                  <div class="placeholder-glow">
+                    <div class="placeholder rounded-3 bg-light w-100" style="height: 80px;"></div>
+                  </div>
+                </div>
               </div>
             </div>
 
             <!-- Recent Activity Placeholder -->
-            <div class="col-span-4 bg-white rounded-3xl border border-gray-100 shadow-soft p-8">
-              <h3 class="text-xl font-bold text-gray-900 mb-6">Recent Activity</h3>
-              <div class="space-y-6">
-                <div class="animate-pulse h-16 bg-gray-50 rounded-2xl"></div>
-                <div class="animate-pulse h-16 bg-gray-50 rounded-2xl"></div>
-                <div class="animate-pulse h-16 bg-gray-50 rounded-2xl"></div>
+            <div class="col-12 col-lg-4">
+              <div class="bg-white rounded-4 border border-light shadow-sm p-4 p-md-5 h-100">
+                <h3 class="h4 fw-bold text-dark mb-4">Recent Activity</h3>
+                <div class="d-flex flex-column gap-3">
+                  <div class="placeholder-glow">
+                    <div class="placeholder rounded-3 bg-light w-100" style="height: 64px;"></div>
+                  </div>
+                  <div class="placeholder-glow">
+                    <div class="placeholder rounded-3 bg-light w-100" style="height: 64px;"></div>
+                  </div>
+                  <div class="placeholder-glow">
+                    <div class="placeholder rounded-3 bg-light w-100" style="height: 64px;"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </main>
+    </div>
+  </div>
+
+  <!-- Session Expiration Warning Modal -->
+  <div class="modal fade" id="session-warning-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="sessionWarningModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 shadow-lg border-0">
+        <div class="modal-body p-4 p-md-5">
+          <div class="d-flex align-items-center justify-content-center mb-4">
+            <div class="rounded-circle bg-warning-subtle text-warning d-flex align-items-center justify-content-center shadow-sm" style="width: 64px; height: 64px;">
+              <svg width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+              </svg>
+            </div>
+          </div>
+          <h3 class="h4 fw-bold text-dark text-center mb-2 tracking-tight" id="sessionWarningModalLabel">Session Expiring</h3>
+          <p class="text-secondary text-center mb-4 pb-2 fw-medium">Your session is about to expire due to inactivity. You will be automatically logged out in 2 minutes.</p>
+          <div class="d-grid gap-3">
+            <button id="extend-session-btn" type="button" class="btn btn-dark py-3 rounded-3 fw-bold shadow-sm" style="background-color: #064e3b !important; border: none;">
+              Stay Logged In
+            </button>
+            <button id="logout-now-btn" type="button" class="btn btn-light py-3 rounded-3 fw-bold border-light">
+              Logout Now
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

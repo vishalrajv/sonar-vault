@@ -67,16 +67,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       itemEl.className = `tree-item py-1`;
       
       const contentEl = document.createElement('div');
-      contentEl.className = `flex items-center gap-2 px-4 py-1.5 rounded-lg cursor-pointer hover:bg-emerald-800/30 transition-all text-sm ${level === 0 ? 'font-bold text-emerald-100' : 'text-emerald-300/80'}`;
+      contentEl.className = `d-flex align-items-center gap-2 px-3 py-2 rounded-3 cursor-pointer hover-bg-dark transition-all small ${level === 0 ? 'fw-bold text-white' : 'text-white-50'}`;
       
       // Icon based on type
       let icon = '';
       if (item.type === 'platform') {
-        icon = `<svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+        icon = `<svg width="16" height="16" class="text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
       } else if (item.type === 'project') {
-        icon = `<svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>`;
+        icon = `<svg width="16" height="16" class="text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>`;
       } else {
-        icon = `<svg class="w-3 h-3 text-emerald-700" fill="currentColor" viewBox="0 0 20 20"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path></svg>`;
+        icon = `<svg width="12" height="12" class="text-success" fill="currentColor" viewBox="0 0 20 20"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path></svg>`;
       }
 
       contentEl.innerHTML = `
@@ -90,12 +90,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       const children = item.projects || item.subsystems;
       if (children && children.length > 0) {
         const childrenContainer = document.createElement('div');
-        childrenContainer.className = 'ml-4 mt-1 border-l border-emerald-800/30 hidden';
+        childrenContainer.className = 'ms-4 mt-1 border-start border-secondary border-opacity-25 d-none';
         renderTree(children, childrenContainer, level + 1);
         itemEl.appendChild(childrenContainer);
 
         contentEl.addEventListener('click', (e) => {
-          childrenContainer.classList.toggle('hidden');
+          childrenContainer.classList.toggle('d-none');
           // Toggle icon/arrow if needed
         });
       }
@@ -106,23 +106,25 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Stats Data
   const statsData = [
-    { label: 'Total Builds', value: '1,284', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10', color: 'emerald' },
-    { label: 'Active Ships', value: '42', icon: 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z', color: 'blue' },
-    { label: 'Resolved Defects', value: '85%', icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z', color: 'purple' }
+    { label: 'Total Builds', value: '1,284', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10', color: 'success' },
+    { label: 'Active Ships', value: '42', icon: 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z', color: 'primary' },
+    { label: 'Resolved Defects', value: '85%', icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z', color: 'info' }
   ];
 
   const statsContainer = document.getElementById('stats-cards-container');
   if (statsContainer) {
     statsContainer.innerHTML = statsData.map(stat => `
-      <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-soft flex items-center gap-6 group hover:border-emerald-500/30 transition-all duration-300">
-        <div class="w-16 h-16 rounded-2xl bg-${stat.color}-50 text-${stat.color}-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${stat.icon}"></path>
-          </svg>
-        </div>
-        <div>
-          <p class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">${stat.label}</p>
-          <p class="text-3xl font-black text-gray-900">${stat.value}</p>
+      <div class="col-12 col-md-4">
+        <div class="bg-white p-4 p-md-5 rounded-4 border border-light shadow-sm d-flex align-items-center gap-4 group transition-all">
+          <div class="rounded-4 bg-${stat.color}-subtle text-${stat.color} d-flex align-items-center justify-content-center shadow-sm" style="width: 64px; height: 64px; flex-shrink: 0;">
+            <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${stat.icon}"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="small fw-bold text-secondary text-uppercase tracking-widest mb-1" style="font-size: 11px;">${stat.label}</p>
+            <p class="h2 fw-black text-dark mb-0" style="font-weight: 900 !important;">${stat.value}</p>
+          </div>
         </div>
       </div>
     `).join('');
@@ -136,21 +138,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const fleetStatusWidget = document.getElementById('fleet-status-widget');
   if (fleetStatusWidget) {
-    const content = fleetStatusWidget.querySelector('.space-y-6');
+    const content = fleetStatusWidget.querySelector('.d-flex.flex-column.gap-3');
     content.innerHTML = fleetStatusData.map(item => `
-      <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100/50">
-        <div class="flex items-center justify-between mb-4">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center text-emerald-600 font-bold text-xs italic">SV</div>
+      <div class="p-4 bg-light rounded-4 border border-light shadow-inner">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <div class="d-flex align-items-center gap-3">
+            <div class="rounded-3 bg-white shadow-sm d-flex align-items-center justify-content-center text-success fw-bold small fst-italic" style="width: 44px; height: 44px;">SV</div>
             <div>
-              <p class="text-sm font-bold text-gray-900">${item.name}</p>
-              <p class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">${item.ships} Ships Updated</p>
+              <p class="small fw-bold text-dark mb-0">${item.name}</p>
+              <p class="fw-bold text-secondary text-uppercase tracking-wider mb-0" style="font-size: 10px;">${item.ships} Ships Updated</p>
             </div>
           </div>
-          <span class="text-lg font-black text-emerald-600">${item.progress}%</span>
+          <span class="h4 fw-black text-success mb-0" style="font-weight: 900 !important;">${item.progress}%</span>
         </div>
-        <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden shadow-inner">
-          <div class="h-full bg-emerald-500 rounded-full shadow-lg transition-all duration-1000" style="width: ${item.progress}%"></div>
+        <div class="progress rounded-pill shadow-inner" style="height: 12px; background-color: rgba(0,0,0,0.05);">
+          <div class="progress-bar bg-success rounded-pill shadow-sm transition-all" role="progressbar" style="width: ${item.progress}%" aria-valuenow="${item.progress}" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
       </div>
     `).join('');

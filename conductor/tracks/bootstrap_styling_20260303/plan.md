@@ -9,16 +9,15 @@
 
 ## Phase 2: Login Page Styling (Proof of Concept)
 *Goal: Stylize the login page using Bootstrap as a baseline for the full migration.*
-- [ ] **Task:** Update `frontend/login.html` to use Bootstrap's layout and form components.
-- [ ] **Task:** Remove all Tailwind CSS classes from `frontend/login.html`.
-- [ ] **Task:** Verify that the "Remember Me" checkbox and Login button are styled correctly.
+- [x] **Task:** Update `frontend/login.html` to use Bootstrap's layout and form components.
+- [x] **Task:** Remove all Tailwind CSS classes from `frontend/login.html`.
+- [x] **Task:** Verify that the "Remember Me" checkbox and Login button are styled correctly.
 - [ ] **Task:** Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
 
 ## Phase 3: Dashboard Layout Migration
-*Goal: Implement Bootstrap's grid system and rebuild core layout components on the dashboard.*
-- [ ] **Task:** Redesign the **Navbar** and **Sidebar** in `frontend/dashboard.html` using Bootstrap.
-- [ ] **Task:** Implement the main content area with Bootstrap's grid system (`container-fluid`, `row`, `col`).
-- [ ] **Task:** Convert **Modals** and **Alerts** in `frontend/dashboard.html` to Bootstrap components.
+- [x] **Task:** Redesign the **Navbar** and **Sidebar** in `frontend/dashboard.html` using Bootstrap.
+- [x] **Task:** Implement the main content area with Bootstrap's grid system (`container-fluid`, `row`, `col`).
+- [x] **Task:** Convert **Modals** and **Alerts** in `frontend/dashboard.html` to Bootstrap components.
 - [ ] **Task:** Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
 
 ## Phase 4: Full Stylization & Component Updates
