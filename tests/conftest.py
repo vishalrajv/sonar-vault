@@ -21,7 +21,14 @@ def test_db():
     try:
         # Seed an admin user
         hashed_pwd = hash_password("adminpass")
-        admin = User(username="admin", hashed_password=hashed_pwd, role="admin")
+        admin = User(
+            username="admin", 
+            staff_number="ADMIN000", 
+            hashed_password=hashed_pwd, 
+            role="admin",
+            is_active=True,
+            is_approved=True
+        )
         db.add(admin)
         db.commit()
         yield db
