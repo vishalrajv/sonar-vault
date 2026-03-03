@@ -22,7 +22,7 @@ async def serve_login():
     return FileResponse("frontend/login.html")
 
 @app.get("/dashboard")
-async def serve_dashboard(current_user=Depends(get_current_active_user)):
+async def serve_dashboard():
     """Serves the dashboard page."""
     return FileResponse("frontend/dashboard.html")
 

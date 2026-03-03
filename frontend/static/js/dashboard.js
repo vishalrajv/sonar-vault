@@ -1,6 +1,38 @@
 import {ChartingHelper} from './charting-helper.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  // Check for authentication
+  const token = localStorage.getItem('access_token');
+  if (!token) {
+    window.location.href = '/login';
+    return;
+  }
+
+  // Verify session with server
+  try {
+    const response = await fetch('/api/v1/session/status', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    
+    if (!response.ok) {
+      // Session invalid (401) or other error
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('token_type');
+      window.location.href = '/login';
+      return;
+    }
+    
+    const userData = await response.json();
+    console.log('Authenticated as:', userData.username);
+    // You could update the UI with userData here (e.g., username in header)
+    
+  } catch (error) {
+    console.error('Session verification error:', error);
+    // Optional: handle network error (maybe don't redirect if server is just down)
+  }
+
   const sidebar = document.getElementById('sidebar');
   const sidebarToggle = document.getElementById('sidebar-toggle');
 
@@ -10,12 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mock Logout functionality
-  const logoutBtn = document.querySelector('button.bg-red-600');
+  // Logout functionality
+  const logoutBtn = document.getElementById('logout-btn');
   if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
       localStorage.removeItem('access_token');
-      window.location.href = 'login.html';
+      localStorage.removeItem('token_type');
+      window.location.href = '/login';
     });
   }
 
