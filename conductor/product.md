@@ -13,7 +13,7 @@ The core features for the initial release include:
 - **Session Management:** Secure access control featuring "Remember Me" persistence, automatic idle timeouts (30 mins), and concurrency restrictions (single active session per staff number).
 
 ## Technical Constraints & Design Principles
-- **100% Offline Environment:** The system must operate entirely offline. To achieve this while maintaining a high-quality UI, **all assets (including Tailwind/React dependencies, fonts, and icons) must be bundled locally** within the project folder. No external cloud or CDN dependencies are permitted.
+- **100% Offline Environment:** The system must operate entirely offline. To achieve this while maintaining a high-quality UI, **all assets (including Bootstrap/React dependencies, fonts, and icons) must be bundled locally** within the project folder. No external cloud or CDN dependencies are permitted.
 - **Hierarchical Structure:** The data is organized based on the relationship between naval platforms (ships) and sonar projects. Projects and subsystems are categorized as either Common or Platform-Specific.
 
 ## Future Expansion

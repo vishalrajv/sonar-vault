@@ -10,7 +10,7 @@
 
 ## Frontend
 - **Core:** Vanilla JS/HTML/CSS
-- **Styling:** Tailwind CSS
+- **Styling:** Bootstrap 5.3.3
 - **Visualization:** Custom SVG Charting Helper (offline-first)
 
 ## Architecture
