@@ -26,8 +26,8 @@
 
 ## Phase 4: Frontend Logic (Session Control)
 *Goal: Implement idle timeout, "Remember Me" UI, and automatic logout.*
-- [~] **Task:** Update `login.html` and `login.js` to include and handle the "Remember Me" checkbox.
-- [ ] **Task:** Implement `session-manager.js` to handle the 30-minute idle timeout (resetting on mouse/keyboard events).
+- [x] **Task:** Update `login.html` and `login.js` to include and handle the "Remember Me" checkbox. 223ceef
+- [~] **Task:** Implement `session-manager.js` to handle the 30-minute idle timeout (resetting on mouse/keyboard events).
 - [ ] **Task:** Add a 2-minute "Session Expiring" warning modal/notification.
 - [ ] **Task:** Update `dashboard.js` to integrate with the session manager and handle 401 redirects.
 - [ ] **Task:** Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
