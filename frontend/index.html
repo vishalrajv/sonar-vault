@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonar Vault - Redirecting...</title>
+    <script>
+        // Check for authentication token in localStorage
+        const token = localStorage.getItem('access_token');
+        if (token) {
+            // Redirect to dashboard if token exists
+            window.location.href = '/dashboard';
+        } else {
+            // Redirect to login if no token
+            window.location.href = '/login';
+        }
+    </script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="text-center">
+        <p class="text-gray-600">Checking authentication...</p>
+    </div>
+</body>
+</html>
