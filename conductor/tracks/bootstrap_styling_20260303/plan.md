@@ -1,6 +1,6 @@
 # Implementation Plan: Bootstrap Styling Integration
 
-## Phase 1: Preparation & Environment Setup
+## Phase 1: Preparation & Environment Setup [checkpoint: 259a79a]
 *Goal: Download Bootstrap 5.3.3 and prepare the project structure for migration.*
 - [x] **Task:** Download Bootstrap 5.3.3 (Compiled CSS and JS) and Popper.js 2.11.8.
 - [x] **Task:** Create the directory `frontend/static/vendor/bootstrap/` and store the downloaded assets.
