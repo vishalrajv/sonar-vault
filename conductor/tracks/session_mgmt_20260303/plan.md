@@ -34,6 +34,7 @@
 
 ## Phase 5: Final Integration & Cleanup
 *Goal: End-to-end verification of the session lifecycle.*
-- [~] **Task:** Perform integration testing for "Single Session Only" across multiple browser tabs.
-- [ ] **Task:** Verify idle timeout triggers correctly in a headless/automated environment.
-- [ ] **Task:** Conductor - User Manual Verification 'Phase 5' (Protocol in workflow.md)
+- [x] **Task:** Perform integration testing for "Single Session Only" across multiple browser tabs. f8b5b2f
+- [x] **Task:** Verify idle timeout triggers correctly in a headless/automated environment. 7adb617
+- [x] **Task:** Conductor - User Manual Verification 'Phase 5' (Protocol in workflow.md)
+
