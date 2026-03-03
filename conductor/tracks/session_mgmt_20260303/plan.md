@@ -8,9 +8,9 @@
 
 ## Phase 2: Backend API Enhancements
 *Goal: Implement logout, concurrency logic, and session status checks.*
-- [~] **Task:** Update `api/v1/auth.py` Login endpoint to generate a unique session ID (JTI) and update the user record.
-- [ ] **Task:** Write Tests: Verify that a second login invalidates the previous session ID in the database.
-- [ ] **Task:** Implement: Concurrency logic in Login.
+- [x] **Task:** Update `api/v1/auth.py` Login endpoint to generate a unique session ID (JTI) and update the user record. f8b5b2f
+- [x] **Task:** Write Tests: Verify that a second login invalidates the previous session ID in the database. f8b5b2f
+- [x] **Task:** Implement: Concurrency logic in Login. f8b5b2f
 - [ ] **Task:** Write Tests: `/api/v1/logout` clears the session ID and returns 200.
 - [ ] **Task:** Implement: Logout endpoint.
 - [ ] **Task:** Write Tests: `/api/v1/session/status` returns user info if valid, 401 if invalid.
