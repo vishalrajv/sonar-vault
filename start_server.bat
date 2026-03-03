@@ -14,7 +14,6 @@ call .venv\Scripts\activate
 
 echo.
 echo Server is starting at http://127.0.0.1:8000
-echo Access the login page at: http://127.0.0.1:8000/login.html
 echo.
 echo Press Ctrl+C to stop the server.
 echo.
