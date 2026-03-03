@@ -20,8 +20,8 @@
 ## Phase 3: Security Middleware & Token Logic
 *Goal: Enforce session validity on protected routes and handle "Remember Me".*
 - [x] **Task:** Update `app/token_utils.py` to handle `expires_delta` for "Remember Me" (e.g., 7 days vs 8 hours). 6b3cb2e
-- [~] **Task:** Implement FastAPI dependency `get_current_active_user` that checks `current_session_id` against the token's JTI.
-- [ ] **Task:** Apply security dependency to `/dashboard` and `/api/v1/vault` routes in `app/main.py`.
+- [x] **Task:** Implement FastAPI dependency `get_current_active_user` that checks `current_session_id` against the token's JTI. a963fb7
+- [x] **Task:** Apply security dependency to `/dashboard` and `/api/v1/vault` routes in `app/main.py`. 544df38
 - [ ] **Task:** Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
 
 ## Phase 4: Frontend Logic (Session Control)
