@@ -5,12 +5,46 @@ from datetime import timedelta
 from jose import JWTError, jwt
 from database.db import get_db
 from models.user import User
-from app.schemas import UserLogin, Token
-from app.auth_utils import verify_password
+from app.schemas import UserLogin, Token, UserRegister, UserSchema
+from app.auth_utils import verify_password, hash_password
 from app.token_utils import create_access_token, SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
 
 router = APIRouter(prefix="/api/v1", tags=["auth"])
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/v1/login")
+
+# ... (rest of imports and existing code)
+
+@router.post("/register", response_model=UserSchema, status_code=status.HTTP_201_CREATED)
+def register(user_data: UserRegister, db: Session = Depends(get_db)):
+    # Check if staff number already exists
+    existing_user = db.query(User).filter(User.staff_number == user_data.staff_number).first()
+    if existing_user:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Staff number already registered"
+        )
+    
+    # Create new user
+    new_user = User(
+        username=user_data.staff_number, # Username is staff number for login
+        staff_number=user_data.staff_number,
+        hashed_password=hash_password(user_data.password),
+        full_name=user_data.full_name,
+        department=user_data.department,
+        role_designation=user_data.role_designation,
+        dob=user_data.dob,
+        phone_number=user_data.phone_number,
+        personal_email=user_data.personal_email,
+        official_email=user_data.official_email,
+        role="user",
+        is_active=False, # Pending approval
+        is_approved=False # Pending approval
+    )
+    
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
+    return new_user
 
 # Define expiration for Remember Me (e.g., 7 days)
 REMEMBER_ME_EXPIRE_DAYS = 7
