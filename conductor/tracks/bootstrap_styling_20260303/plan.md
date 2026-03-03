@@ -20,14 +20,14 @@
 - [x] **Task:** Convert **Modals** and **Alerts** in `frontend/dashboard.html` to Bootstrap components.
 - [ ] **Task:** Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
 
-## Phase 4: Full Stylization & Component Updates
+## Phase 4: Full Stylization & Component Updates [checkpoint: b49da5e]
 *Goal: Ensure all page elements across the application are styled consistently with Bootstrap.*
 - [x] **Task:** Systematically update all remaining UI elements (e.g., page headers, data grids, buttons) in the dashboard.
 - [x] **Task:** Ensure high contrast is maintained for all Bootstrap components (colors, typography).
 - [x] **Task:** Verify that the custom SVG Charting Helper integrates seamlessly with the new Bootstrap layout.
 - [ ] **Task:** Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
 
-## Phase 5: Tailwind Removal & Cleanup
+## Phase 5: Tailwind Removal & Cleanup [checkpoint: b49da5e]
 *Goal: Remove all Tailwind-related files and configurations from the project.*
 - [x] **Task:** Final check to ensure no Tailwind classes remain in the HTML templates.
 - [x] **Task:** Uninstall Tailwind CSS from `package.json` and remove `tailwind.config.js`.
