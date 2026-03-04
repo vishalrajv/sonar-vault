@@ -10,8 +10,8 @@ class Token(BaseModel):
     access_token: str
     token_type: str
     role: str
-    full_name: str
-    department: str
+    full_name: Optional[str] = None
+    department: Optional[str] = None
 
 class UserSchema(BaseModel):
     id: int

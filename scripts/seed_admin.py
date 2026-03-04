@@ -17,7 +17,7 @@ def seed_admin():
     db = SessionLocal()
     try:
         # Check if admin already exists
-        admin = db.query(User).filter(User.username == "admin").first()
+        admin = db.query(User).filter(User.staff_number == "ADMIN000").first()
         if admin:
             print("Admin user already exists.")
             return
@@ -25,14 +25,18 @@ def seed_admin():
         print("Seeding initial admin user...")
         hashed_pwd = hash_password("admin123")
         admin_user = User(
-            username="admin",
+            username="ADMIN000",
+            staff_number="ADMIN000",
             hashed_password=hashed_pwd,
             role="admin",
-            is_active=True
+            full_name="System Admin",
+            department="BSTC",
+            is_active=True,
+            is_approved=True
         )
         db.add(admin_user)
         db.commit()
-        print("Admin user created successfully (username: admin, password: admin123).")
+        print("Admin user created successfully (Staff Number: ADMIN000, password: admin123).")
         print("IMPORTANT: Change the password after first login.")
     except Exception as e:
         print(f"Error seeding admin user: {e}")

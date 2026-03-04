@@ -29,13 +29,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // Check for authentication (Optional: keep for now, but focus on UI)
-  const token = localStorage.getItem('access_token');
-  // if (!token) {
-  //   window.location.href = '/login';
-  //   return;
-  // }
-
   // Identity & Actions: Populate from localStorage
   const userFullName = localStorage.getItem('user_full_name') || 'Guest';
   const userRole = localStorage.getItem('user_role') || 'user';
@@ -58,10 +51,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Sidebar Admin Link Visibility
   const sidebarAdminLinks = document.getElementById('sidebar-admin-links');
   if (userRole === 'admin' && sidebarAdminLinks) {
-    sidebarAdminLinks.classList.remove('d-none');
+    sidebarAdminLinks.hidden = false;
   }
 
   // Update all internal links to include token
+  const token = localStorage.getItem('access_token');
   if (token) {
     document.querySelectorAll('a[href^="/"], a[href$=".html"]').forEach(link => {
       const url = new URL(link.href, window.location.origin);

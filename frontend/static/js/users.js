@@ -49,10 +49,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Sidebar Admin Link Visibility
   const sidebarAdminLinks = document.getElementById('sidebar-admin-links');
   if (userRole === 'admin' && sidebarAdminLinks) {
-    sidebarAdminLinks.classList.remove('d-none');
+    sidebarAdminLinks.hidden = false;
   }
 
   // Update all internal links to include token
+  const token = localStorage.getItem('access_token');
   if (token) {
     document.querySelectorAll('a[href^="/"], a[href$=".html"]').forEach(link => {
       const url = new URL(link.href, window.location.origin);
@@ -74,7 +75,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   fetchPendingUsers();
 
   async function fetchPendingUsers() {
-    const token = localStorage.getItem('access_token');
     const tableBody = document.getElementById('pending-users-table-body');
     
     try {
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const users = await response.json();
         renderPendingUsers(users);
       } else if (response.status === 401) {
-          window.location.href = '/login?reason=expired';
+        window.location.href = '/login?reason=expired';
       }
     } catch (e) {
       console.error('Failed to fetch pending users:', e);
@@ -127,7 +127,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   async function approveUser(userId, button) {
-    const token = localStorage.getItem('access_token');
     const originalText = button.textContent;
     button.disabled = true;
     button.textContent = '...';
