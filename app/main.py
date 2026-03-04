@@ -26,6 +26,11 @@ async def serve_register():
     """Serves the registration page."""
     return FileResponse("frontend/register.html")
 
+@app.get("/users")
+async def serve_users():
+    """Serves the user management page."""
+    return FileResponse("frontend/users.html")
+
 @app.get("/dashboard")
 async def serve_dashboard():
     """Serves the dashboard page."""
