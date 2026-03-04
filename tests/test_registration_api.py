@@ -6,8 +6,10 @@ client = TestClient(app)
 
 def test_register_user_success():
     """Verify that a user can successfully submit registration."""
+    import random
+    staff_num = f"BEL{random.randint(10000, 99999)}"
     payload = {
-        "staff_number": "BEL12345",
+        "staff_number": staff_num,
         "password": "securepassword",
         "full_name": "Test User",
         "department": "D&E",
@@ -20,7 +22,7 @@ def test_register_user_success():
     response = client.post("/api/v1/register", json=payload)
     assert response.status_code == 201
     data = response.json()
-    assert data["staff_number"] == "BEL12345"
+    assert data["staff_number"] == staff_num
     assert data["is_approved"] is False
     assert data["is_active"] is False
 

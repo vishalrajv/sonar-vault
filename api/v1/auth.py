@@ -23,14 +23,14 @@ async def get_current_user(db: Session = Depends(get_db), token: str = Depends(o
     )
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username: str = payload.get("sub")
+        username: str = payload.get("sub") # This is staff_number
         jti: str = payload.get("jti")
         if username is None or jti is None:
             raise credentials_exception
     except JWTError:
         raise credentials_exception
         
-    user = db.query(User).filter(User.username == username).first()
+    user = db.query(User).filter(User.staff_number == username).first()
     if user is None:
         raise credentials_exception
         
@@ -45,6 +45,8 @@ async def get_current_user(db: Session = Depends(get_db), token: str = Depends(o
     return user
 
 async def get_current_active_user(current_user: User = Depends(get_current_user)):
+    if not current_user.is_approved:
+        raise HTTPException(status_code=403, detail="Account pending approval")
     if not current_user.is_active:
         raise HTTPException(status_code=403, detail="Inactive user")
     return current_user
@@ -91,18 +93,26 @@ def register(user_data: UserRegister, db: Session = Depends(get_db)):
 
 @router.post("/login", response_model=Token)
 def login(user_credentials: UserLogin, db: Session = Depends(get_db)):
-    user = db.query(User).filter(User.username == user_credentials.username).first()
+    # Login using staff_number (mapped to username in UserLogin schema)
+    user = db.query(User).filter(User.staff_number == user_credentials.username).first()
 
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect username or password",
+            detail="Incorrect staff number or password",
         )
 
     if not verify_password(user_credentials.password, user.hashed_password):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect username or password",
+            detail="Incorrect staff number or password",
+        )
+
+    # Check approval status
+    if not user.is_approved:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Account pending approval",
         )
 
     # Determine token expiration
@@ -112,7 +122,7 @@ def login(user_credentials: UserLogin, db: Session = Depends(get_db)):
         expires_delta = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
 
     access_token, jti = create_access_token(
-        data={"sub": user.username, "role": user.role},
+        data={"sub": user.staff_number, "role": user.role},
         expires_delta=expires_delta
     )
     
@@ -134,8 +144,10 @@ def get_session_status(current_user: User = Depends(get_current_user)):
     """Returns the current user info if the session is valid."""
     return {
         "username": current_user.username,
+        "staff_number": current_user.staff_number,
         "role": current_user.role,
-        "is_active": current_user.is_active
+        "is_active": current_user.is_active,
+        "is_approved": current_user.is_approved
     }
 
 @router.get("/admin/pending-users", response_model=list[UserSchema])

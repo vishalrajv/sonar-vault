@@ -11,7 +11,7 @@ def test_dashboard_html_structure():
   with open("frontend/dashboard.html", "r") as f:
     content = f.read()
     assert "<!DOCTYPE html>" in content
-    assert "static/css/tailwind.css" in content
+    assert "static/vendor/bootstrap/bootstrap.min.css" in content
     assert "Dashboard" in content
     assert "static/js/dashboard.js" in content
     assert 'id="sidebar"' in content

@@ -2,14 +2,13 @@ import os
 
 def test_frontend_files_exist():
     assert os.path.exists("frontend/login.html")
-    assert os.path.exists("frontend/static/css/tailwind.css")
-    assert os.path.exists("frontend/static/js/login.js")
+    assert os.path.exists("frontend/static/vendor/bootstrap/bootstrap.min.css")
 
 def test_login_html_content():
     with open("frontend/login.html", "r") as f:
         content = f.read()
         assert '<form id="login-form">' in content
-        assert "static/css/tailwind.css" in content
+        assert "static/vendor/bootstrap/bootstrap.min.css" in content
         assert "static/js/login.js" in content
 
 def test_login_js_content():

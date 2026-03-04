@@ -14,10 +14,14 @@ engine = create_engine(
 )
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+class SessionManager:
+    db = None
+
 @pytest.fixture(scope="module")
 def test_db():
     Base.metadata.create_all(bind=engine)
     db = TestingSessionLocal()
+    SessionManager.db = db
     try:
         # Seed an admin user
         hashed_pwd = hash_password("adminpass")
@@ -39,10 +43,7 @@ def test_db():
 @pytest.fixture(scope="module")
 def client(test_db):
     def override_get_db():
-        try:
-            yield test_db
-        finally:
-            pass
+        yield SessionManager.db
     
     app.dependency_overrides[get_db] = override_get_db
     from fastapi.testclient import TestClient

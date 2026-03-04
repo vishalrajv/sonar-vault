@@ -24,7 +24,7 @@ def admin_token(client, test_db):
     
     response = client.post(
         "/api/v1/login",
-        json={"username": "admin_test", "password": "adminpass"}
+        json={"username": "ADMIN001", "password": "adminpass"}
     )
     return response.json()["access_token"]
 
@@ -46,7 +46,7 @@ def user_token(client, test_db):
     
     response = client.post(
         "/api/v1/login",
-        json={"username": "user_test", "password": "userpass"}
+        json={"username": "USER001", "password": "userpass"}
     )
     return response.json()["access_token"]
 
