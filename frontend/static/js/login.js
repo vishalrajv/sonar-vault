@@ -37,6 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Successful login
                 localStorage.setItem('access_token', data.access_token);
                 localStorage.setItem('token_type', data.token_type);
+                localStorage.setItem('user_role', data.role);
+                localStorage.setItem('user_full_name', data.full_name);
+                localStorage.setItem('user_department', data.department);
                 
                 // Automatically redirect to dashboard
                 window.location.href = '/dashboard';

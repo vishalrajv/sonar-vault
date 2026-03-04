@@ -130,7 +130,13 @@ def login(user_credentials: UserLogin, db: Session = Depends(get_db)):
     user.current_session_id = jti
     db.commit()
     
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {
+        "access_token": access_token,
+        "token_type": "bearer",
+        "role": user.role,
+        "full_name": user.full_name,
+        "department": user.department
+    }
 
 @router.post("/logout")
 def logout(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
