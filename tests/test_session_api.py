@@ -107,7 +107,14 @@ def test_login_remember_me_expiration(client, test_db):
     # Long-lived should be significantly later than standard
     assert exp > exp_std
 
-def test_dashboard_shell_accessible(client):
-    """Verify that /dashboard shell is accessible (auth handled via JS)."""
-    resp = client.get("/dashboard")
+def test_dashboard_shell_accessible(client, test_db):
+    """Verify that /dashboard shell is accessible with a token."""
+    # Seed and login
+    user = User(username="test_shell", staff_number="T_SHELL", hashed_password=hash_password("p"), role="user", is_approved=True, is_active=True)
+    test_db.add(user)
+    test_db.commit()
+    login_resp = client.post("/api/v1/login", json={"username": "T_SHELL", "password": "p"})
+    token = login_resp.json()["access_token"]
+
+    resp = client.get(f"/dashboard?token={token}")
     assert resp.status_code == 200

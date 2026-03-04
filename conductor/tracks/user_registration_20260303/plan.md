@@ -35,11 +35,11 @@
 - [x] Task: Update `frontend/dashboard.html` and `frontend/static/js/dashboard.js` to include the Admin Pending Approvals widget.
 - [x] Task: Conductor - User Manual Verification 'Phase 5' (Protocol in workflow.md) [51d6030]
 
-## Phase 6: User Management Refactoring
+## Phase 6: User Management Refactoring [checkpoint: 65b62ef]
 *Goal: Move pending approvals to a dedicated User Management page.*
 - [x] Task: Create `frontend/users.html` for user management.
 - [x] Task: Create `frontend/static/js/users.js` to handle user management logic.
 - [x] Task: Update Sidebar in `frontend/dashboard.html` and `frontend/users.html` to include "User Management" (Admin Only).
 - [x] Task: Add `/users` route to `app/main.py`.
 - [x] Task: Remove pending approvals widget from `frontend/dashboard.html` and `frontend/static/js/dashboard.js`.
-- [~] Task: Conductor - User Manual Verification 'Phase 6' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 6' (Protocol in workflow.md) [65b62ef]
