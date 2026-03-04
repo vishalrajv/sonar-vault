@@ -8,6 +8,7 @@ The primary user groups for the initial implementation are the **Design & Engine
 
 ## Core Features (MVP)
 The core features for the initial release include:
+- **User Registration & Admin Approval:** A secure onboarding workflow where new users register with BEL credentials (Staff Number). Accounts are created in a pending state and must be manually approved by an administrator before access is granted.
 - **Software Vault (Upload/View):** A centralized repository to track software builds using automated metadata (upload date) and manual entries (version number, compiled date) from the uploading agency. It will feature a preview grid for users to view the current state of software across the fleet.
 - **Fleet Dashboard:** A high-level overview page providing key metrics (Total Builds, Active Ships), software upload trends via charts, and a summary of recent activity across the fleet.
 - **Session Management:** Secure access control featuring "Remember Me" persistence, automatic idle timeouts (30 mins), and concurrency restrictions (single active session per staff number).
