@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const logoutBtn = document.getElementById('logout-btn');
   if (logoutBtn) {
     logoutBtn.addEventListener('click', async () => {
-      // Use the logic from session manager but with a specific redirect
       const token = localStorage.getItem('access_token');
       if (token) {
         try {
@@ -25,6 +24,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
       localStorage.removeItem('access_token');
       localStorage.removeItem('token_type');
+      localStorage.removeItem('user_role');
+      localStorage.removeItem('user_full_name');
+      localStorage.removeItem('user_department');
       window.location.href = '/login?reason=logout';
     });
   }

@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
       localStorage.removeItem('access_token');
       localStorage.removeItem('token_type');
+      localStorage.removeItem('user_role');
+      localStorage.removeItem('user_full_name');
+      localStorage.removeItem('user_department');
       window.location.href = '/login?reason=logout';
     });
   }
