@@ -27,4 +27,10 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md) [3a150ce]
 
 ## Phase 5: Frontend - User Registration
-...
+*Goal: Implement the registration UI and connect it to the backend.*
+- [x] Task: Create `frontend/register.html` with the required fields.
+- [~] Task: Create `frontend/static/js/register.js` to handle form submission.
+- [ ] Task: Add `/register` route to `app/main.py` to serve the registration page.
+- [ ] Task: Update `frontend/login.html` with a link to the registration page.
+- [ ] Task: Update `frontend/dashboard.html` and `frontend/static/js/dashboard.js` to include the Admin Pending Approvals widget.
+- [ ] Task: Conductor - User Manual Verification 'Phase 5' (Protocol in workflow.md)
