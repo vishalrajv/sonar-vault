@@ -38,8 +38,8 @@
 ## Phase 6: User Management Refactoring
 *Goal: Move pending approvals to a dedicated User Management page.*
 - [x] Task: Create `frontend/users.html` for user management.
-- [~] Task: Create `frontend/static/js/users.js` to handle user management logic.
-- [ ] Task: Update Sidebar in `frontend/dashboard.html` and `frontend/users.html` to include "User Management" (Admin Only).
+- [x] Task: Create `frontend/static/js/users.js` to handle user management logic.
+- [~] Task: Update Sidebar in `frontend/dashboard.html` and `frontend/users.html` to include "User Management" (Admin Only).
 - [ ] Task: Add `/users` route to `app/main.py`.
 - [ ] Task: Remove pending approvals widget from `frontend/dashboard.html` and `frontend/static/js/dashboard.js`.
 - [ ] Task: Conductor - User Manual Verification 'Phase 6' (Protocol in workflow.md)
