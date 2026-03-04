@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from api.v1.auth import router as auth_router, get_current_active_user
+from api.v1.auth import router as auth_router, get_current_active_user, get_current_admin_user
 
 app = FastAPI(title="Sonar Vault")
 
@@ -27,12 +27,12 @@ async def serve_register():
     return FileResponse("frontend/register.html")
 
 @app.get("/users")
-async def serve_users():
-    """Serves the user management page."""
+async def serve_users(current_user=Depends(get_current_admin_user)):
+    """Serves the user management page (Admin Only)."""
     return FileResponse("frontend/users.html")
 
 @app.get("/dashboard")
-async def serve_dashboard():
+async def serve_dashboard(current_user=Depends(get_current_active_user)):
     """Serves the dashboard page."""
     return FileResponse("frontend/dashboard.html")
 

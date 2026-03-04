@@ -61,6 +61,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     sidebarAdminLinks.classList.remove('d-none');
   }
 
+  // Update all internal links to include token
+  if (token) {
+    document.querySelectorAll('a[href^="/"], a[href$=".html"]').forEach(link => {
+      const url = new URL(link.href, window.location.origin);
+      if (url.origin === window.location.origin) {
+        url.searchParams.set('token', token);
+        link.href = url.pathname + url.search;
+      }
+    });
+  }
+
   // Global Search Interactivity (⌘F)
   const globalSearch = document.getElementById('global-search');
   document.addEventListener('keydown', (e) => {

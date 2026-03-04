@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('user_department', data.department);
                 
                 // Automatically redirect to dashboard
-                window.location.href = '/dashboard';
+                window.location.href = `/dashboard?token=${data.access_token}`;
             } else {
                 // Error from server
                 errorMessage.textContent = data.detail || 'Login failed. Please try again.';

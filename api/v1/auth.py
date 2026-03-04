@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Query
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from datetime import timedelta
@@ -8,21 +8,31 @@ from models.user import User
 from app.schemas import UserLogin, Token, UserRegister, UserSchema
 from app.auth_utils import verify_password, hash_password
 from app.token_utils import create_access_token, SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
+from typing import Optional
 
 router = APIRouter(prefix="/api/v1", tags=["auth"])
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/v1/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/v1/login", auto_error=False)
 
 # Define expiration for Remember Me (e.g., 7 days)
 REMEMBER_ME_EXPIRE_DAYS = 7
 
-async def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
+async def get_current_user(
+    db: Session = Depends(get_db), 
+    token: Optional[str] = Depends(oauth2_scheme),
+    token_query: Optional[str] = Query(None, alias="token")
+):
+    actual_token = token or token_query
+    
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
         headers={"WWW-Authenticate": "Bearer"},
     )
+    if not actual_token:
+        raise credentials_exception
+
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(actual_token, SECRET_KEY, algorithms=[ALGORITHM])
         username: str = payload.get("sub") # This is staff_number
         jti: str = payload.get("jti")
         if username is None or jti is None:

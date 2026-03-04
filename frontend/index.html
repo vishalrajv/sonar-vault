@@ -11,8 +11,8 @@
         // Check for authentication token in localStorage
         const token = localStorage.getItem('access_token');
         if (token) {
-            // Redirect to dashboard if token exists
-            window.location.href = '/dashboard';
+            // Redirect to dashboard with token
+            window.location.href = `/dashboard?token=${token}`;
         } else {
             // Redirect to login if no token
             window.location.href = '/login';
