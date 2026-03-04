@@ -22,7 +22,7 @@
 ## Phase 4: Auth and Login Logic Updates (TDD)
 *Goal: Transition login to use Staff Number and enforce approval checks.*
 - [x] Task: Write failing tests for login using Staff Number and rejecting unapproved users. [81a344b]
-- [ ] Task: Update `login` endpoint in `api/v1/auth.py`.
+- [x] Task: Update login endpoint in `api/v1/auth.py`. [cead19e]
 - [ ] Task: Update `get_current_user` dependency to handle new schema.
 - [ ] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
 
