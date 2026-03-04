@@ -1,6 +1,3 @@
 ---
 
 ---
-
-- [x] **Track: Implement user registration/sign-up page with admin approval workflow.**
-*Link: [./tracks/user_registration_20260303/](./tracks/user_registration_20260303/)*
