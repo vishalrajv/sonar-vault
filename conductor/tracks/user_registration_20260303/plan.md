@@ -43,3 +43,6 @@
 - [x] Task: Add `/users` route to `app/main.py`.
 - [x] Task: Remove pending approvals widget from `frontend/dashboard.html` and `frontend/static/js/dashboard.js`.
 - [x] Task: Conductor - User Manual Verification 'Phase 6' (Protocol in workflow.md) [65b62ef]
+
+## Phase: Review Fixes
+- [x] Task: Apply review suggestions [640aad4]
