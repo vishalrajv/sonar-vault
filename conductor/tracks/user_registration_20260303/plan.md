@@ -41,5 +41,5 @@
 - [x] Task: Create `frontend/static/js/users.js` to handle user management logic.
 - [x] Task: Update Sidebar in `frontend/dashboard.html` and `frontend/users.html` to include "User Management" (Admin Only).
 - [x] Task: Add `/users` route to `app/main.py`.
-- [~] Task: Remove pending approvals widget from `frontend/dashboard.html` and `frontend/static/js/dashboard.js`.
-- [ ] Task: Conductor - User Manual Verification 'Phase 6' (Protocol in workflow.md)
+- [x] Task: Remove pending approvals widget from `frontend/dashboard.html` and `frontend/static/js/dashboard.js`.
+- [~] Task: Conductor - User Manual Verification 'Phase 6' (Protocol in workflow.md)

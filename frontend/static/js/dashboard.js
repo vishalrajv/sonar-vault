@@ -55,84 +55,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  // Admin Section: Pending Approvals
-  const adminSection = document.getElementById('admin-pending-approvals-section');
-  if (userRole === 'admin' && adminSection) {
-    adminSection.classList.remove('d-none');
-    fetchPendingUsers();
-  }
-
-  async function fetchPendingUsers() {
-    const token = localStorage.getItem('access_token');
-    try {
-      const response = await fetch('/api/v1/admin/pending-users', {
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
-      if (response.ok) {
-        const users = await response.json();
-        renderPendingUsers(users);
-      }
-    } catch (e) {
-      console.error('Failed to fetch pending users:', e);
-    }
-  }
-
-  function renderPendingUsers(users) {
-    const tableBody = document.getElementById('pending-users-table-body');
-    const badge = document.getElementById('pending-count-badge');
-    
-    if (badge) badge.textContent = `${users.length} Pending`;
-    
-    if (tableBody) {
-      if (users.length === 0) {
-        tableBody.innerHTML = '<tr><td colspan="4" class="text-center py-4 text-secondary">No pending approvals</td></tr>';
-        return;
-      }
-
-      tableBody.innerHTML = users.map(user => `
-        <tr>
-          <td class="fw-bold text-dark">${user.staff_number}</td>
-          <td>${user.full_name}</td>
-          <td><span class="badge bg-light text-secondary border border-light-subtle">${user.department}</span></td>
-          <td class="text-end">
-            <button class="btn btn-sm btn-success px-3 fw-bold rounded-2 approve-btn" data-id="${user.id}">Approve</button>
-          </td>
-        </tr>
-      `).join('');
-
-      // Add event listeners to approve buttons
-      tableBody.querySelectorAll('.approve-btn').forEach(btn => {
-        btn.addEventListener('click', async () => {
-          const userId = btn.getAttribute('data-id');
-          await approveUser(userId, btn);
-        });
-      });
-    }
-  }
-
-  async function approveUser(userId, button) {
-    const token = localStorage.getItem('access_token');
-    button.disabled = true;
-    button.textContent = '...';
-    
-    try {
-      const response = await fetch(`/api/v1/admin/approve-user/${userId}`, {
-        method: 'POST',
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
-      if (response.ok) {
-        // Refresh list
-        fetchPendingUsers();
-      } else {
-        alert('Failed to approve user.');
-        button.disabled = false;
-        button.textContent = 'Approve';
-      }
-    } catch (e) {
-      console.error('Error approving user:', e);
-      button.disabled = false;
-      button.textContent = 'Approve';
-    }
+  // Sidebar Admin Link Visibility
+  const sidebarAdminLinks = document.getElementById('sidebar-admin-links');
+  if (userRole === 'admin' && sidebarAdminLinks) {
+    sidebarAdminLinks.classList.remove('d-none');
   }
 
   // Global Search Interactivity (⌘F)
