@@ -19,12 +19,12 @@
 - [x] Task: Implement admin endpoints in `api/v1/auth.py`.
 - [x] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
 
-## Phase 4: Auth and Login Logic Updates (TDD)
+## Phase 4: Auth and Login Logic Updates (TDD) [checkpoint: 3a150ce]
 *Goal: Transition login to use Staff Number and enforce approval checks.*
 - [x] Task: Write failing tests for login using Staff Number and rejecting unapproved users. [81a344b]
 - [x] Task: Update login endpoint in `api/v1/auth.py`. [cead19e]
 - [x] Task: Update `get_current_user` dependency to handle new schema. [cead19e]
-- [ ] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md) [3a150ce]
 
 ## Phase 5: Frontend - User Registration
 ...
