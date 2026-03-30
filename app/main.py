@@ -39,4 +39,3 @@ async def serve_dashboard(current_user=Depends(get_current_active_user)):
 # Serve frontend static files
 # We mount this last so it doesn't override our explicit routes
 app.mount("/", StaticFiles(directory="frontend", html=True), name="static")
-

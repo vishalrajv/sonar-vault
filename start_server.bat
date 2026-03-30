@@ -13,9 +13,9 @@ echo Activating virtual environment...
 call .venv\Scripts\activate
 
 echo.
-echo Server is starting at http://127.0.0.1:8000
+echo Server is starting at http://127.0.0.1:8654
 echo.
 echo Press Ctrl+C to stop the server.
 echo.
 
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload --port 8654
