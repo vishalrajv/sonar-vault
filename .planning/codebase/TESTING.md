@@ -2,117 +2,50 @@
 
 ## Framework & Tooling
 
-| Tool | Purpose | Config |
-|------|---------|--------|
-| `pytest` | Test runner | Default config, no `pytest.ini` or `pyproject.toml` |
-| `pytest-cov` | Coverage reporting | CLI flag: `--cov=app --cov-report=html` |
-| `FastAPI TestClient` | HTTP integration tests | Via `from fastapi.testclient import TestClient` |
-| SQLite (in-memory/file) | Test database | `sqlite:///./test.db` in `conftest.py` |
+| Tool | Purpose | Configuration |
+|------|---------|---------------|
+| `pytest` | Main test runner | Defaults |
+| `pytest-cov` | Coverage reporting | `--cov=app --cov-report=html` |
+| `FastAPI TestClient`| Route integration tests | Native Starlette client |
+| SQLite | Test Database | `sqlite:///./test.db` (file-based) |
 
 ## Test Structure
 
-### Location
-All tests live in `tests/` directory at project root. No subdirectories — flat structure.
+All tests reside in the `tests/` root directory using a flat structure.
 
-### Test Files (18 total)
+### File Naming
+- Functional/Unit Tests: `test_<module_or_feature>.py` (e.g., `test_login_api.py`)
+- Scaffolding/Bootstrap Tests: `test_phase<N>_<focus>.py` (e.g., `test_phase1_bootstrap.py`)
 
-| Test File | Focus | Lines |
-|-----------|-------|-------|
-| `conftest.py` | Shared fixtures (test DB, client, admin seed) | 52 |
-| `test_phase1_bootstrap.py` | Phase 1 scaffolding validation | 1611 |
-| `test_phase1_db_schema.py` | Database schema verification | 713 |
-| `test_phase2_login_bootstrap.py` | Login page/API bootstrapping | 1324 |
-| `test_phase3_dashboard_bootstrap.py` | Dashboard scaffolding | 2024 |
-| `test_auth_utils.py` | Password hash/verify functions | 324 |
-| `test_db.py` | Database connection/session | 322 |
-| `test_user_model.py` | User SQLAlchemy model | 461 |
-| `test_user_model_session.py` | User session ID field | 672 |
-| `test_login_api.py` | Login endpoint | 1010 |
-| `test_login_updates.py` | Login flow updates (Remember Me) | 1704 |
-| `test_registration_api.py` | Registration endpoint | 1689 |
-| `test_admin_approval_api.py` | Admin approval endpoint | 2949 |
-| `test_session_api.py` | Session status/concurrency | 5099 |
-| `test_frontend_scaffolding.py` | Frontend file existence checks | 733 |
-| `test_dashboard_scaffolding.py` | Dashboard HTML structure | 2931 |
-| `test_dashboard_components.py` | Dashboard widget verification | 1982 |
-| `test_integration.py` | End-to-end flow | 989 |
+### Current Test Manifest (18 Files)
+- **API/Integration:** `test_login_api.py`, `test_registration_api.py`, `test_admin_approval_api.py`, `test_session_api.py`, `test_integration.py`
+- **Models/DB:** `test_user_model.py`, `test_user_model_session.py`, `test_db.py`
+- **Utils:** `test_auth_utils.py`
+- **Scaffolding:** `test_phase*`, `test_frontend_scaffolding.py`, `test_dashboard_scaffolding.py`, `test_dashboard_components.py`
 
-### Naming Convention
-- Files: `test_<feature_or_module>.py`
-- Phase-prefixed: `test_phase<N>_<area>.py` for scaffolding validation
-- Functions: `test_<behavior>()` (standard pytest convention)
+## Fixtures & Database Pattern
 
-## Fixture Pattern
+The `tests/conftest.py` file manages shared global configurations:
 
-### `conftest.py` provides:
+### `test_db` Fixture
+Module-scoped database lifecycle:
+1. Creates total schema (`Base.metadata.create_all()`)
+2. Seeds initial data (e.g., `ADMIN000` user)
+3. Yields session to tests
+4. Drops schema after module execution (`Base.metadata.drop_all()`)
 
-```python
-# Module-scoped fixtures (shared across test module):
+### `client` Fixture
+Provides the `TestClient` while overriding FastAPI dependencies:
+- Overrides `get_db` to inject the test database session.
 
-@pytest.fixture(scope="module")
-def test_db():
-    """Creates test DB, seeds admin user, yields session, cleans up."""
-    Base.metadata.create_all(bind=engine)
-    db = TestingSessionLocal()
-    # Seed admin user (username="admin", staff="ADMIN000")
-    # ...
-    yield db
-    db.close()
-    Base.metadata.drop_all(bind=engine)
+## Coverage Requirements
 
-@pytest.fixture(scope="module")
-def client(test_db):
-    """FastAPI TestClient with overridden DB dependency."""
-    app.dependency_overrides[get_db] = override_get_db
-    yield TestClient(app)
-    del app.dependency_overrides[get_db]
-```
+- **Minimum Threshold:** >80% statement coverage for all application modules.
+- **Validation:** Enforced as a Quality Gate in `conductor/workflow.md`.
 
-**Key pattern:** A `SessionManager` class holds the shared `db` reference for the `get_db` override.
+## Deficits & Gaps
 
-### Test Database
-- Separate `test.db` SQLite file (not in-memory)
-- Full schema created/dropped per module
-- Admin user pre-seeded for authenticated tests
-
-## Testing Patterns
-
-### API Tests
-```python
-# Standard API test pattern:
-def test_login_success(client, test_db):
-    response = client.post("/api/v1/login", json={
-        "username": "ADMIN000",
-        "password": "adminpass"
-    })
-    assert response.status_code == 200
-    data = response.json()
-    assert "access_token" in data
-```
-
-### Frontend Tests
-- File existence checks (`os.path.exists()`)
-- HTML content parsing (string matching or basic structure checks)
-- No browser-based tests (no Playwright/Selenium)
-
-### Mocking
-- No mocking framework (no `unittest.mock` usage observed)
-- DB dependency override via `app.dependency_overrides` instead of mocking
-- Real SQLite database used for all test data
-
-## Coverage
-
-- **Target:** >80% (per `conductor/workflow.md`)
-- **Command:** `pytest --cov=app --cov-report=html`
-- **Current status:** `.coverage` file exists (53 KB) — coverage has been run
-- **Coverage scope:** `app/` module (auth_utils, token_utils, schemas, main)
-
-## Gaps & Notes
-
-1. **No dedicated API module tests** — `api/v1/auth.py` tested via integration (TestClient) not unit tests
-2. **No frontend JS tests** — No Jest, Vitest, or browser testing setup
-3. **Module-scoped fixtures** may cause test ordering issues (shared state across tests)
-4. **`test.db` file** persists on disk — could cause stale state if tests crash
-5. **No CI pipeline** — Tests run manually only
-6. **No test for charting helper** — `charting-helper.js` has zero test coverage
-7. **Phase-prefixed tests** validate scaffolding only — could be removed once code matures
+1. **JavaScript Testing:** Complete absence of frontend JS testing (no Jest/Vitest). Complex logic in `dashboard.js` and `charting-helper.js` is untested.
+2. **Missing Unit Tests:** Route handlers (`api/v1/auth.py`) lack isolated unit tests (heavily reliant on `TestClient` integration scope).
+3. **Fixture State Leakage:** Module-scoped database lifecycles could introduce cross-test state contamination if modifications aren't carefully managed.
+4. **Mocking:** No usage of `unittest.mock` for external constraints or isolation.
