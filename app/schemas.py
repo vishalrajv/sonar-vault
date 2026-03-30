@@ -1,10 +1,37 @@
 from pydantic import BaseModel, ConfigDict, EmailStr
 from typing import Optional
 
+
+class SubsystemSchema(BaseModel):
+    id: int
+    name: str
+    project_id: int
+    platform_id: Optional[int] = None
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class ProjectSchema(BaseModel):
+    id: int
+    name: str
+    subsystems: list[SubsystemSchema] = []
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class PlatformSchema(BaseModel):
+    id: int
+    name: str
+    projects: list[ProjectSchema] = []
+
+    model_config = ConfigDict(from_attributes=True)
+
+
 class UserLogin(BaseModel):
-    username: str # Staff Number
+    username: str  # Staff Number
     password: str
     remember_me: bool = False
+
 
 class Token(BaseModel):
     access_token: str
@@ -13,6 +40,7 @@ class Token(BaseModel):
     full_name: Optional[str] = None
     department: Optional[str] = None
 
+
 class UserSchema(BaseModel):
     id: int
     username: str
@@ -20,8 +48,11 @@ class UserSchema(BaseModel):
     role: str
     is_active: bool
     is_approved: bool
+    department: Optional[str] = None
+    role_designation: Optional[str] = None
 
     model_config = ConfigDict(from_attributes=True)
+
 
 class UserRegister(BaseModel):
     staff_number: str
